@@ -2,8 +2,12 @@ import React from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import './App.css';
+import moment from 'moment';
+moment().format();
 
 function App() {
+  const date = moment().format('DD/MM/YY HH:mm:ss');
+  console.log(date);
   return (
     <div className="App">
       <header className="App-header">
