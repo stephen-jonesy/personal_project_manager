@@ -10,13 +10,14 @@ const selectProjectById = (state, projectId) => {
 export function Project({ id }) {
     const dispatch = useDispatch();
 
-    const {dueDate, isCompleted, note, priority, projectId, projectName} = useSelector((state) => selectProjectById(state, id));
+    const {dueDate, isComplete, note, priority, projectId, projectName} = useSelector((state) => selectProjectById(state, id));
     const onDelete = () => {
         dispatch(removeProject(id));
     };
 
     return (  
         <li>
+            <button>{isComplete ? 'True' : 'False'}</button>
             <div>{projectName}</div>
             <button onClick={onDelete}>x</button>
         </li>
