@@ -4,23 +4,22 @@ import { removeProject } from '../projectsSlice';
 
 
 const selectProjectById = (state, projectId) => {
-    return state.projects.find((project) => project.projectId === projectId)
-}
+    return state.projects.find((project) => project.projectId === projectId);
+};
 
 export function Project({ id }) {
     const dispatch = useDispatch();
 
-    const project = useSelector((state) => selectProjectById(state, id));
+    const {dueDate, isCompleted, note, priority, projectId, projectName} = useSelector((state) => selectProjectById(state, id));
     const onDelete = () => {
         dispatch(removeProject(id));
-    }
+    };
 
-    
     return (  
         <li>
-            <div>{project.projectName}</div>
+            <div>{projectName}</div>
             <button onClick={onDelete}>x</button>
         </li>
 
     );
-}
+};

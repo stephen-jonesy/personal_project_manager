@@ -10,7 +10,7 @@ export const user = {
         isCompleted: false,
         dueDate: '09/03/23 08:41:46',
         priority: 0,
-        note: null 
+        note: '' 
 
     },
     {
@@ -20,7 +20,7 @@ export const user = {
         isCompleted: false,
         dueDate: '09/03/23 08:41:46',
         priority: 0,
-        note: null 
+        note: '' 
 
     },{
         projectId: 3,
@@ -29,7 +29,7 @@ export const user = {
         isCompleted: false,
         dueDate: '09/03/23 08:41:46',
         priority: 0,
-        note: null 
+        note: '' 
 
     }]
 
