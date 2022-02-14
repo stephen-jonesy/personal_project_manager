@@ -14,7 +14,7 @@ export function Projects() {
     });
     
     return (  
-        <div>
+        <div className="">
 
             <ul className="project-list">{renderEachProject}</ul>
         </div>

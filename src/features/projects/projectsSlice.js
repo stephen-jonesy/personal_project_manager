@@ -30,10 +30,18 @@ export const projectsSlice = createSlice({
 
             return state.filter((project) => project.projectId !== action.payload);
         },
+
+        toggleCompleted: (state, action) => {
+            console.log(action.payload);
+            return state.map((project) =>
+                project.projectId === action.payload ? {...project, isComplete: !project.isComplete} : project
+            )
+
+        }
     }
 });
 
-export const { addProject, removeProject } = projectsSlice.actions;
+export const { addProject, removeProject, toggleCompleted } = projectsSlice.actions;
 
 export default projectsSlice.reducer;
 
