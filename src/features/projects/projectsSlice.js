@@ -32,16 +32,35 @@ export const projectsSlice = createSlice({
         },
 
         toggleCompleted: (state, action) => {
-            console.log(action.payload);
             return state.map((project) =>
                 project.projectId === action.payload ? {...project, isComplete: !project.isComplete} : project
-            )
+            );
+
+        },
+
+        togglePriority: (state, action) => {
+            const [id, priority] = action.payload;
+
+            return state.map((project) =>
+                project.projectId === id ? {...project, priority: priority} : project
+            );
+
+        },
+
+        updateNote: (state, action) => {
+            const [id, note] = action.payload;
+
+            console.log(id, note);
+
+            return state.map((project) =>
+            project.projectId === id ? {...project, note: note} : project
+            );
 
         }
     }
 });
 
-export const { addProject, removeProject, toggleCompleted } = projectsSlice.actions;
+export const { addProject, removeProject, toggleCompleted, togglePriority, updateNote } = projectsSlice.actions;
 
 export default projectsSlice.reducer;
 

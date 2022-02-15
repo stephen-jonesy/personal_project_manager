@@ -11,14 +11,14 @@ export function Form() {
     const dispatch = useDispatch();
 
     const [projectName, setName] = useState('');
-    const [Priority, setPriority] = useState(0);
+    const [Priority, setPriority] = useState('None');
     
 	const addProjectButton = (event) => {
         const createdAt = moment().format('DD/MM/YY HH:mm:ss');
         const unique_id = uuid();
         const small_id = unique_id.slice(0,8);
         event.preventDefault();        
-        const projectObj = {projectName: projectName, small_id: small_id, Priority:parseInt(Priority), createdAt: createdAt };
+        const projectObj = {projectName: projectName, small_id: small_id, Priority: Priority, createdAt: createdAt };
         dispatch(addProject(projectObj));
         setName("");
 
@@ -28,11 +28,11 @@ export function Form() {
         <form type="submit">
             <input placeholder="New Project" value={projectName}   onChange={(e) => {setName(e.target.value)}}/>
             <select onChange={(e) => {setPriority(e.target.value)}}>
-                <option value="0">Select Priority</option>
-                <option value="0">Not Set</option>
-                <option value="1">Low</option>
-                <option value="2">Medium</option>
-                <option value="3">High</option>
+                <option value="None">Select Priority</option>
+                <option value="None">Not Set</option>
+                <option value="None">Low</option>
+                <option value="None">Medium</option>
+                <option value="None">High</option>
             </select>
             <button type="submit" value="Add project" onClick={addProjectButton}></button>
         </form>

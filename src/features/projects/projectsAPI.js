@@ -9,8 +9,8 @@ export const user = {
         createdAt: '09/02/22 20:59:41',
         isComplete: false,
         dueDate: '09/03/23 08:41:46',
-        priority: 0,
-        note: '' 
+        priority: 'None',
+        note: 'Some stuff here' 
 
     },
     {
@@ -19,7 +19,7 @@ export const user = {
         createdAt: '09/02/22 20:59:41',
         isComplete: true,
         dueDate: '09/03/23 08:41:46',
-        priority: 0,
+        priority: 'Low',
         note: '' 
 
     },{
@@ -28,7 +28,7 @@ export const user = {
         createdAt: '09/02/22 20:59:41',
         isComplete: false,
         dueDate: '09/03/23 08:41:46',
-        priority: 0,
+        priority: 'High',
         note: '' 
 
     }]
