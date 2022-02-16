@@ -8,7 +8,7 @@ export const user = {
         projectName: 'project one',
         createdAt: '09/02/22 20:59:41',
         isComplete: false,
-        dueDate: '09/03/23 08:41:46',
+        dueDate: '09/03/2022',
         priority: 'None',
         note: 'Some stuff here' 
 
@@ -18,7 +18,7 @@ export const user = {
         projectName: 'project two',
         createdAt: '09/02/22 20:59:41',
         isComplete: true,
-        dueDate: '09/03/23 08:41:46',
+        dueDate: '10/4/2022',
         priority: 'Low',
         note: '' 
 
@@ -27,7 +27,7 @@ export const user = {
         projectName: 'project three',
         createdAt: '09/02/22 20:59:41',
         isComplete: false,
-        dueDate: '09/03/23 08:41:46',
+        dueDate: '09/03/2023',
         priority: 'High',
         note: '' 
 

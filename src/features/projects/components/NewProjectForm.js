@@ -1,12 +1,11 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeProject, toggleCompleted, togglePriority, updateNote } from '../projectsSlice';
-import { Calendar } from './Calendar';
-import Button from 'react-bootstrap/Button';
-import {OverlayTrigger, Overlay, Tooltip, Toast} from 'react-bootstrap';
+import {Button, OverlayTrigger, Tooltip, Toast} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faNoteSticky } from '@fortawesome/free-solid-svg-icons'
 import { addProject } from '../projectsSlice';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { v4 as uuid } from 'uuid';
 import moment from 'moment';
 <FontAwesomeIcon icon="fa-solid fa-note-sticky" />
@@ -18,20 +17,29 @@ export function NewProjectForm({ toggleShow }) {
     const [projectName, setName] = useState('');
     const [Priority, setPriority] = useState('None');
     const [noteValue, setNote] = useState('');
+    const [dueDate, setDueDate] = useState(new Date());
     const noteIcon = <FontAwesomeIcon icon={faNoteSticky} />
     const dispatch = useDispatch();
+
 
     moment().format();
     
 	const addProjectButton = (event) => {
+        event.preventDefault();        
+
         const createdAt = moment().format('DD/MM/YY HH:mm:ss');
         const unique_id = uuid();
         const small_id = unique_id.slice(0,8);
-        event.preventDefault();        
-        const projectObj = {projectName: projectName, small_id: small_id, Priority: Priority, createdAt: createdAt, note: noteValue };
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const today  = new Date();
+        const formatedDueDate = dueDate.toLocaleDateString("en-UK");
+        const projectObj = {projectName: projectName, small_id: small_id, dueDate: formatedDueDate, Priority: Priority, createdAt: createdAt, note: noteValue };
+
         dispatch(addProject(projectObj));
+
         toggleShow();
-    };
+
+    };           
 
     return (  
         <form className="d-flex mb-5 shadow-sm rounded bg-light" >
@@ -40,7 +48,7 @@ export function NewProjectForm({ toggleShow }) {
             <div className="col-4"><div className="row"><div className="col-12">            
                 <input placeholder="New Project"  value={projectName}   onChange={(e) => {setName(e.target.value)}} />
             </div></div></div>
-            <div className="col-3 d-flex"> <Calendar/></div>
+            <div className="col-3 d-flex"><DatePicker dateFormat="dd/MM/yyyy" selected={dueDate} onChange={(date) => setDueDate(date)} /></div>
 
             <OverlayTrigger 
                 trigger="click" 

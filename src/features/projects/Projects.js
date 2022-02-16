@@ -15,6 +15,7 @@ export function Projects() {
         setShow(!show);
     };
 
+
     const renderNewProjectForm = () => {
         if(show === true) {
             return <NewProjectForm toggleShow={toggleShow}/>

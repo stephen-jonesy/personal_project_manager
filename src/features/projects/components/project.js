@@ -47,7 +47,7 @@ export function Project({ id }) {
 
             <Button id="completed-btn" className="btn btn-primary col-1" onClick={(e) => eventHandler(e.target)}>{isComplete ? 'True' : 'False'}</Button>
             <div className="col-4"><div className="row"><div className="col-12">{projectName}</div></div></div>
-            <div className="col-3 d-flex"> <Calendar/></div>
+            <div className="col-3 d-flex"> <Calendar dueDate={dueDate} id={id}/></div>
 
             <OverlayTrigger 
                 trigger="click" 

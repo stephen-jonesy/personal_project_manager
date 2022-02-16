@@ -9,7 +9,7 @@ export const projectsSlice = createSlice({
     reducers: {
         addProject: (state, action) => {
             
-            const {projectName, small_id, Priority, createdAt, note} = action.payload;
+            const {projectName, small_id, dueDate, Priority, createdAt, note} = action.payload;
             console.log(action.payload);
 
             const project = {
@@ -17,7 +17,7 @@ export const projectsSlice = createSlice({
                 projectName: projectName,
                 createdAt: createdAt,
                 isComplete: false,
-                dueDate: '09/03/23 08:41:46',
+                dueDate: dueDate,
                 priority: Priority,
                 note: note 
 			};
@@ -47,6 +47,12 @@ export const projectsSlice = createSlice({
             );
 
         },
+        updateDueDate: (state, action) => {
+            const [id, dueDate] = action.payload;
+            return state.map((project) =>
+            project.projectId === id ? {...project, dueDate: dueDate} : project
+            );
+        },
 
         updateNote: (state, action) => {
             const [id, note] = action.payload;
@@ -61,7 +67,7 @@ export const projectsSlice = createSlice({
     }
 });
 
-export const { addProject, removeProject, toggleCompleted, togglePriority, updateNote } = projectsSlice.actions;
+export const { addProject, removeProject, toggleCompleted, togglePriority, updateDueDate, updateNote } = projectsSlice.actions;
 
 export default projectsSlice.reducer;
 
