@@ -8,8 +8,8 @@ export const projectsSlice = createSlice({
     initialState: user.projects,
     reducers: {
         addProject: (state, action) => {
-            console.log(current(state))
-            const {projectName, small_id, Priority, createdAt} = action.payload;
+            
+            const {projectName, small_id, Priority, createdAt, note} = action.payload;
             console.log(action.payload);
 
             const project = {
@@ -19,10 +19,11 @@ export const projectsSlice = createSlice({
                 isComplete: false,
                 dueDate: '09/03/23 08:41:46',
                 priority: Priority,
-                note: null 
+                note: note 
 			};
 
 			state.push(project);
+            console.log(current(state))
 
         },
 
