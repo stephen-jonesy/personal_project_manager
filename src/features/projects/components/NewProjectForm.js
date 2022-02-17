@@ -33,7 +33,14 @@ export function NewProjectForm({ toggleShow }) {
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         const today  = new Date();
         const formatedDueDate = dueDate.toLocaleDateString("en-UK");
-        const projectObj = {projectName: projectName, small_id: small_id, dueDate: formatedDueDate, Priority: Priority, createdAt: createdAt, note: noteValue };
+        const projectObj = {
+            projectName: projectName, 
+            small_id: small_id, 
+            dueDate: formatedDueDate, 
+            Priority: Priority, 
+            createdAt: createdAt, 
+            note: noteValue 
+        };
 
         dispatch(addProject(projectObj));
 
