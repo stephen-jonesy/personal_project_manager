@@ -12,6 +12,7 @@ const selectProjectById = (state, projectId) => {
     return state.projects.find((project) => project.projectId === projectId);
 };
 
+console.log('branch calendar');
 export function Project({ id }) {
     const {dueDate, isComplete, note, priority, projectId, projectName} = useSelector((state) => selectProjectById(state, id));
     const dispatch = useDispatch();
@@ -21,12 +22,15 @@ export function Project({ id }) {
     const noteIcon = <FontAwesomeIcon icon={faNoteSticky} />
 
     const eventHandler = (e) => {
+
         if (e.id === "completed-btn") {
             dispatch(toggleCompleted(id));
 
         };
+
         if (e.id === "delete-btn") {
             dispatch(removeProject(id));
+
         };
 
         if (e.id === "priority-toggle-btn") {
