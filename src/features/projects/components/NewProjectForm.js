@@ -11,7 +11,6 @@ import moment from 'moment';
 <FontAwesomeIcon icon="fa-solid fa-note-sticky" />
 
 export function NewProjectForm({ toggleShow }) {
-    console.log('new project');
     const [showA, setShowA] = useState(false);
     const toggleShowA = () => setShowA(!showA);
     const [projectName, setName] = useState('');

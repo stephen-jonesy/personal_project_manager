@@ -10,7 +10,6 @@ export const projectsSlice = createSlice({
         addProject: (state, action) => {
             
             const {projectName, small_id, dueDate, Priority, createdAt, note} = action.payload;
-            console.log(action.payload);
 
             const project = {
 				projectId: small_id,
@@ -34,8 +33,7 @@ export const projectsSlice = createSlice({
 
         toggleCompleted: (state, action) => {
             return state.map((project) =>
-                project.projectId === action.payload ? {...project, isComplete: !project.isComplete} : project
-            );
+                project.projectId === action.payload ? {...project, isComplete: !project.isComplete} : project);
 
         },
 
@@ -43,15 +41,13 @@ export const projectsSlice = createSlice({
             const [id, priority] = action.payload;
 
             return state.map((project) =>
-                project.projectId === id ? {...project, priority: priority} : project
-            );
+                project.projectId === id ? {...project, priority: priority} : project);
 
         },
         updateDueDate: (state, action) => {
             const [id, dueDate] = action.payload;
             return state.map((project) =>
-            project.projectId === id ? {...project, dueDate: dueDate} : project
-            );
+            project.projectId === id ? {...project, dueDate: dueDate} : project);
         },
 
         updateNote: (state, action) => {
@@ -60,14 +56,23 @@ export const projectsSlice = createSlice({
             console.log(id, note);
 
             return state.map((project) =>
-            project.projectId === id ? {...project, note: note} : project
-            );
+            project.projectId === id ? {...project, note: note} : project);
 
+        },
+
+        sortProjects: (state, action) => {
+            console.log(current(state))
+            
+            return [...state].sort(function(a, b){
+                if(a.projectName < b.projectName) { return -1; }
+                if(a.projectName > b.projectName) { return 1; }
+                return 0;
+            });
         }
     }
 });
 
-export const { addProject, removeProject, toggleCompleted, togglePriority, updateDueDate, updateNote } = projectsSlice.actions;
+export const { addProject, removeProject, toggleCompleted, togglePriority, updateDueDate, updateNote, sortProjects } = projectsSlice.actions;
 
 export default projectsSlice.reducer;
 

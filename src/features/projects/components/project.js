@@ -12,7 +12,6 @@ const selectProjectById = (state, projectId) => {
     return state.projects.find((project) => project.projectId === projectId);
 };
 
-console.log('branch calendar');
 export function Project({ id }) {
     const {dueDate, isComplete, note, priority, projectId, projectName} = useSelector((state) => selectProjectById(state, id));
     const dispatch = useDispatch();
