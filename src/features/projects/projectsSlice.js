@@ -22,7 +22,6 @@ export const projectsSlice = createSlice({
 			};
 
 			state.push(project);
-            console.log(current(state))
 
         },
 
@@ -61,13 +60,18 @@ export const projectsSlice = createSlice({
         },
 
         sortProjects: (state, action) => {
-            console.log(current(state))
-            
-            return [...state].sort(function(a, b){
-                if(a.projectName < b.projectName) { return -1; }
-                if(a.projectName > b.projectName) { return 1; }
+            console.log(action.payload);
+            const {show, sortType} = action.payload;
+
+            const sorted = [...state].sort(function(a, b){
+                if(a[sortType] < b[sortType]) { return -1; }
+                if(a[sortType] > b[sortType]) { return 1; }
                 return 0;
             });
+            console.log(current(state));
+
+            return sorted;
+            
         }
     }
 });

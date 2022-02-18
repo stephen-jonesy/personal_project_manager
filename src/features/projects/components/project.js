@@ -1,9 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeProject, toggleCompleted, togglePriority, updateNote } from '../projectsSlice';
 import { Calendar } from './Calendar';
-import Button from 'react-bootstrap/Button';
-import {OverlayTrigger, Overlay, Tooltip, Toast} from 'react-bootstrap';
+import {Button, OverlayTrigger, Overlay, Tooltip, Toast} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faNoteSticky } from '@fortawesome/free-solid-svg-icons'
 <FontAwesomeIcon icon="fa-solid fa-note-sticky" />
