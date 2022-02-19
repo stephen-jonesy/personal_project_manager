@@ -61,16 +61,59 @@ export const projectsSlice = createSlice({
 
         sortProjects: (state, action) => {
             console.log(action.payload);
+
             const {show, sortType} = action.payload;
 
-            const sorted = [...state].sort(function(a, b){
-                if(a[sortType] < b[sortType]) { return -1; }
-                if(a[sortType] > b[sortType]) { return 1; }
-                return 0;
-            });
-            console.log(current(state));
+            if(sortType === 'dueDate') {
+                const sorted = [...state].sort(function(a, b) {
+                    var dateA = new Date(a.dueDate), dateB = new Date(b.dueDate);
+                    return dateA - dateB;
+                });
+    
+                console.log(current(state));
+    
+                return sorted;
 
-            return sorted;
+            } 
+            if(sortType === 'Priority') {
+                const sorted = [...state].sort((a, b) => {
+                    const sorter = {
+                      "None": 0,
+                      "Low": 1,
+                      "Medium": 2,
+                      "High": 3,
+                    }
+                    return sorter[b.priority] - sorter[a.priority]
+                });
+    
+                console.log(current(state));
+    
+                return sorted;
+
+            } 
+            if(sortType === 'Notes') {
+                const sorted = [...state].sort((a, b) => {
+                    return a.note.length - b.note.length;
+
+                });
+    
+                console.log(current(state));
+    
+                return sorted;
+
+            } 
+            
+            else {
+                const sorted = [...state].sort(function(a, b){
+                    if(a[sortType] < b[sortType]) { return -1; }
+                    if(a[sortType] > b[sortType]) { return 1; }
+                    return 0;
+                });
+                console.log(current(state));
+    
+                return sorted;
+
+            }
             
         }
     }

@@ -20,10 +20,6 @@ export function ProjectToolbar() {
         dispatch(sortProjects(payload));
 
     }
-    console.log(previousSortType);
-
-
-
 
     return (  
         <ul className="project-list ">
@@ -40,7 +36,7 @@ export function ProjectToolbar() {
                     </button>
                 </div>
                 <div className="col-3">
-                    <button value="Due" onClick={(e) => sortHandler(e)}>
+                    <button value="dueDate" onClick={(e) => sortHandler(e)}>
                         Due {chevron}
                     </button>
                 </div>
