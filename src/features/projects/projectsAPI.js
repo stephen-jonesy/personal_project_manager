@@ -19,7 +19,7 @@ export const user = {
         projectName: 'a',
         createdAt: '09/02/22 20:59:41',
         isComplete: false,
-        dueDate: '10/4/2023',
+        dueDate: '10/04/2023',
         priority: 'Low',
         note: '', 
         num: 1 
