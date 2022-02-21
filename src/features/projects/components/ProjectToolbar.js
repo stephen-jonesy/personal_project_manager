@@ -9,17 +9,19 @@ export function ProjectToolbar() {
     const chevron = <FontAwesomeIcon icon={faChevronUp} size="sm" />;
     const dispatch = useDispatch();
     const [show, setShow] = useState(false);
-    const [SortType, setSortType] = useState('');
+    const [SortType, setSortType] = useState('stuff');
 
     const sortHandler = (e) => {
         let newBtn = true;
-        const sortType = e.target.value;
-        const payload = {show: newBtn, sortType: sortType};
+        // setSortType(e.target.value);
+        // console.log(SortType);
+        const payload = {show: newBtn, sortType: SortType};
 
         // setShow(!show);
         dispatch(sortProjects(payload));
 
     }
+
 
     return (  
         <ul className="project-list ">

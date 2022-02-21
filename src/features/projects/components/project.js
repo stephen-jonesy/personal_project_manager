@@ -12,7 +12,8 @@ const selectProjectById = (state, projectId) => {
 };
 
 export function Project({ id }) {
-    const {dueDate, isComplete, note, priority, projectId, projectName} = useSelector((state) => selectProjectById(state, id));
+
+    const {projectName, dueDate, isComplete, note, priority, projectId} = useSelector((state) => selectProjectById(state, id));
     const dispatch = useDispatch();
     const [showA, setShowA] = useState(false);
     const toggleShowA = () => setShowA(!showA);
