@@ -7,10 +7,8 @@ import Button from 'react-bootstrap/Button';
 import { ReactSortable } from "react-sortablejs";
 
 
-
 export function Projects() {
     const selectProjects = (state) => state.projects;
-
     const dispatch = useDispatch();
     const projects = useSelector(selectProjects);
     const [show, setShow] = useState(false);
@@ -18,16 +16,14 @@ export function Projects() {
         ...item,
         selected: false       
     }));
-
     const [list, setList] = useState(array);
+    const toggleShow = () => {
+        setShow(!show);
+    };
 
     useEffect(() => {
         setList(array);
     }, [JSON.stringify(array)]);
-
-    const toggleShow = () => {
-        setShow(!show);
-    };
 
     const renderNewProjectForm = () => {
         if(show === true) {
@@ -35,8 +31,6 @@ export function Projects() {
 
         }
     };
-
-    console.log(list)
 
     return (  
         <div className="">
@@ -49,7 +43,7 @@ export function Projects() {
 
                 <ReactSortable list={list} setList={setList}>
                     {list.map((project) => (
-                        <Project key={project.projectId} id={project.projectId} />
+                        <Project key={project.projectId} id={project.projectId} projectList={list} />
                     ))}
                 </ReactSortable>
             </ul>

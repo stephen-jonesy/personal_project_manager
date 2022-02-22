@@ -9,11 +9,11 @@ export function ProjectToolbar() {
     const chevron = <FontAwesomeIcon icon={faChevronUp} size="sm" />;
     const dispatch = useDispatch();
     const [show, setShow] = useState(false);
-    const [SortType, setSortType] = useState('stuff');
+    // const [SortType, setSortType] = useState('stuff');
 
     const sortHandler = (e) => {
         let newBtn = true;
-        // setSortType(e.target.value);
+        let SortType = e.target.value;
         // console.log(SortType);
         const payload = {show: newBtn, sortType: SortType};
 

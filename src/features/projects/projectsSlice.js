@@ -93,7 +93,7 @@ export const projectsSlice = createSlice({
             } 
             if(sortType === 'Notes') {
                 const sorted = [...state].sort((a, b) => {
-                    return a.note.length - b.note.length;
+                    return b.note.length - a.note.length;
 
                 });
     
