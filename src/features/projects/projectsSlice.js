@@ -1,7 +1,5 @@
 import {  createSlice, current } from '@reduxjs/toolkit';
 import { user } from './projectsAPI';
-
-
   
 export const projectsSlice = createSlice({
     name: 'projects',

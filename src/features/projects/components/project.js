@@ -7,12 +7,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faNoteSticky } from '@fortawesome/free-solid-svg-icons'
 <FontAwesomeIcon icon="fa-solid fa-note-sticky" />
 
-
-
 export function Project({ id, projectList }) {
     const project = () => {
         return projectList.find((project) => project.projectId === id);
     };
+    console.log(project())
     const {projectName, dueDate, isComplete, note, priority, projectId} = project();
     const dispatch = useDispatch();
     const [showA, setShowA] = useState(false);

@@ -6,7 +6,6 @@ import { Project } from './components/Project';
 import Button from 'react-bootstrap/Button';
 import { ReactSortable } from "react-sortablejs";
 
-
 export function Projects() {
     const selectProjects = (state) => state.projects;
     const dispatch = useDispatch();
