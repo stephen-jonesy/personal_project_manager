@@ -4,8 +4,6 @@ import { useDispatch } from 'react-redux';
 import "react-datepicker/dist/react-datepicker.css";
 import { updateDueDate } from '../projectsSlice';
 
-
-
 export function Calendar({ dueDate, id }) {
     const [startDate, setStartDate] = useState(new Date());
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };

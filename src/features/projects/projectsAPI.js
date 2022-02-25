@@ -5,7 +5,7 @@ export const user = {
     createdAt: '01/01/22 07:41:46',
     projects: [{
         projectId: "fbaba635",
-        projectName: 'b',
+        projectName: 'Project One',
         createdAt: '09/02/22 20:59:41',
         isComplete: true,
         dueDate: '11/03/2022',
@@ -16,7 +16,7 @@ export const user = {
     },
     {
         projectId: "69b5f8fc",
-        projectName: 'a',
+        projectName: 'Project two',
         createdAt: '09/02/22 20:59:41',
         isComplete: false,
         dueDate: '10/04/2023',
@@ -26,7 +26,7 @@ export const user = {
 
     },{
         projectId: "1c41b765",
-        projectName: 'e',
+        projectName: 'Project three',
         createdAt: '09/02/22 20:59:41',
         isComplete: false,
         dueDate: '09/03/2022',
