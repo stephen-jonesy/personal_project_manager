@@ -20,18 +20,18 @@ export function NewProjectForm({ toggleShow }) {
     const noteIcon = <FontAwesomeIcon icon={faNoteSticky} />
     const dispatch = useDispatch();
 
-
     moment().format();
     
 	const addProjectButton = (event) => {
         event.preventDefault();        
 
-        const createdAt = moment().format('DD/MM/YY HH:mm:ss');
+        const createdAt = moment().format('DD/MM/YYYY');
         const unique_id = uuid();
         const small_id = unique_id.slice(0,8);
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         const today  = new Date();
-        const formatedDueDate = dueDate.toLocaleDateString("en-UK");
+        const formatedDueDate = moment(dueDate).format('DD/MM/YYYY');
+        console.log(formatedDueDate);
         const projectObj = {
             projectName: projectName, 
             small_id: small_id, 
