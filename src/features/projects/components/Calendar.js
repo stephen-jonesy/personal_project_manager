@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 import { useDispatch } from 'react-redux';
 import "react-datepicker/dist/react-datepicker.css";
 import { updateDueDate } from '../projectsSlice';
+import moment from 'moment';
 
 export function Calendar({ dueDate, id }) {
     const [startDate, setStartDate] = useState(new Date());
@@ -12,15 +13,14 @@ export function Calendar({ dueDate, id }) {
 
     const updateDue = (date) => {
         setStartDate(date);
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        const formatedDueDate = date.toLocaleDateString("en-UK");
+        const formatedDueDate = moment(date).format('YYYY/MM/DD');
         console.log(formatedDueDate);
         dispatch(updateDueDate([id, formatedDueDate]));
 
     }
 
     return (  
-        <DatePicker dateFormat="dd/MM/yyyy" value={dueDate} onChange={(date) => updateDue(date)} />
+        <DatePicker dateFormat="yyyy/MM/dd" value={moment(dueDate).format('DD/MM/YYYY')} onChange={(date) => updateDue(date)} />
 
     );
 };

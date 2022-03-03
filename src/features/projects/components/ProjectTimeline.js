@@ -5,7 +5,6 @@ import { Calendar } from './Calendar';
 import { ProgressBar} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { format, parseISO } from 'date-fns';
-import moment from 'moment';
 
 <FontAwesomeIcon icon="fa-solid fa-note-sticky" />
 
@@ -13,29 +12,33 @@ export function ProjectTimeline({ id, projectList }) {
     const project = () => {
         return projectList.find((project) => project.projectId === id);
     };
+    const createdAt = new Date(project().createdAt);
+    const dueDate = new Date(project().dueDate);
+    // const formatedEndDate = moment(project().dueDate).format('DD/MM/YYYY');
+    // const endDate = moment(formatedEndDate).toDate();
 
-    const createdAt = project().createdAt;
-    const dueAt = project().dueDate;
-    const formatedStartDate = moment(createdAt).format('DD/MM/YYYY');
-    const formatedEndDate = moment(dueAt);
+    // const formatedEndDate = format(dueDate, 'dd-MM-yyyy')
 
     // const formatedStartDate = format(new Date(createdAt), "yyyy/MM/dd");
     // const formatedEndDate = format(new Date(dueAt), "yyyy/MM/dd");
-    // const start = new Date(formatedStartDate);
-    // const end = new Date(formatedEndDate);
-    // const today = new Date();
+    const start = createdAt;
+    const end = dueDate;
+    const today = new Date();
 
-    // //use Math.abs to avoid sign
-    // const q = Math.abs(today-start);
-    // const d = Math.abs(end-start);
-    // const rounded = Math.round((q/d)*100);
+    //use Math.abs to avoid sign
+    const q = Math.abs(today-start);
+    const d = Math.abs(end-start);
+    const rounded = Math.round((q/d)*100);
 
-    // // const formatedStartDate = start.toLocaleDateString("en-UK");
+    // const formatedStartDate = start.toLocaleDateString("en-UK");
+    // console.log('createdAt', createdAt);
     // console.log('dueAt', dueAt);
+    // console.log('formatedStartDate', formatedStartDate);
     // console.log('formatedEndDate', formatedEndDate);
     // console.log('end', end);
+    console.log(createdAt);
 
-    const now = '';
+    const now = rounded;
 
     return (  
         <li className="d-flex my-3 shadow-sm rounded bg-light" >

@@ -25,12 +25,12 @@ export function NewProjectForm({ toggleShow }) {
 	const addProjectButton = (event) => {
         event.preventDefault();        
 
-        const createdAt = moment().format('DD/MM/YYYY');
+        const createdAt = moment().format('YYYY/MM/DD');
         const unique_id = uuid();
         const small_id = unique_id.slice(0,8);
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         const today  = new Date();
-        const formatedDueDate = moment(dueDate).format('DD/MM/YYYY');
+        const formatedDueDate = moment(dueDate).format('YYYY/MM/DD');
         console.log(formatedDueDate);
         const projectObj = {
             projectName: projectName, 
