@@ -50,7 +50,6 @@ export const projectsSlice = createSlice({
         updateNote: (state, action) => {
             const [id, note] = action.payload;
 
-            console.log(id, note);
 
             return state.map((project) =>
             project.projectId === id ? {...project, note: note} : project);
@@ -58,7 +57,6 @@ export const projectsSlice = createSlice({
         },
 
         sortProjects: (state, action) => {
-            console.log(action.payload);
 
             const {show, sortType} = action.payload;
 
@@ -68,7 +66,7 @@ export const projectsSlice = createSlice({
                     return dateA - dateB;
                 });
     
-                console.log(current(state));
+                // console.log(current(state));
     
                 return sorted;
 
@@ -84,7 +82,6 @@ export const projectsSlice = createSlice({
                     return sorter[b.priority] - sorter[a.priority]
                 });
     
-                console.log(current(state));
     
                 return sorted;
 
@@ -95,7 +92,6 @@ export const projectsSlice = createSlice({
 
                 });
     
-                console.log(current(state));
     
                 return sorted;
 
@@ -107,7 +103,6 @@ export const projectsSlice = createSlice({
                     if(a[sortType] > b[sortType]) { return 1; }
                     return 0;
                 });
-                console.log(current(state));
     
                 return sorted;
 

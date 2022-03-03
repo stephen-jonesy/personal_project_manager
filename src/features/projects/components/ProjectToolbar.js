@@ -14,7 +14,7 @@ export function ProjectToolbar() {
     const sortHandler = (e) => {
         let newBtn = true;
         let SortType = e.target.value;
-        // console.log(SortType);
+        console.log(SortType);
         const payload = {show: newBtn, sortType: SortType};
 
         // setShow(!show);
