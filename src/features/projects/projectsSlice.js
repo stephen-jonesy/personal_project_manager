@@ -58,7 +58,7 @@ export const projectsSlice = createSlice({
 
         sortProjects: (state, action) => {
 
-            const {show, sortType} = action.payload;
+            const sortType = action.payload;
 
             if(sortType === 'dueDate') {
                 const sorted = [...state].sort(function(a, b) {

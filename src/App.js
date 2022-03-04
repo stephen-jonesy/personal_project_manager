@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
+import './App.css';
 import { Projects } from './features/projects/Projects';
 import { Timeline } from './features/projects/Timeline';
-
-import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
-
 
 function App() {
 
