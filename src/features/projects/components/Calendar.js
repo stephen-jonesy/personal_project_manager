@@ -5,22 +5,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import { updateDueDate } from '../projectsSlice';
 import moment from 'moment';
 
-export function Calendar({ dueDate, id }) {
-    const [startDate, setStartDate] = useState(new Date());
+export function Calendar({ databaseDate, updateDate }) {
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const today  = new Date();
-    const dispatch = useDispatch();
-
-    const updateDue = (date) => {
-        setStartDate(date);
-        const formatedDueDate = moment(date).format('YYYY/MM/DD');
-        console.log(formatedDueDate);
-        dispatch(updateDueDate([id, formatedDueDate]));
-
-    }
 
     return (  
-        <DatePicker dateFormat="yyyy/MM/dd" value={moment(dueDate).format('DD/MM/YYYY')} onChange={(date) => updateDue(date)} />
+        <DatePicker dateFormat="yyyy/MM/dd" value={moment(databaseDate).format('DD/MM/YYYY')} onChange={(date) => updateDate(date)} />
 
     );
 };

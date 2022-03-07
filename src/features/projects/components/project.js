@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeProject, toggleCompleted, togglePriority, updateNote } from '../projectsSlice';
+import { removeProject, toggleCompleted, togglePriority, updateNote, updateCreatedDate, updateDueDate } from '../projectsSlice';
 import { Calendar } from './Calendar';
 import {Button, OverlayTrigger, Overlay, Tooltip, Toast} from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faNoteSticky } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faNoteSticky } from '@fortawesome/free-solid-svg-icons';
+import moment from 'moment';
+
 <FontAwesomeIcon icon="fa-solid fa-note-sticky" />
 
 export function Project({ id, projectList }) {
@@ -16,6 +18,8 @@ export function Project({ id, projectList }) {
     const [showA, setShowA] = useState(false);
     const toggleShowA = () => setShowA(!showA);
     const [noteValue, setNote] = useState(note);
+    const [startDate, setStartDate] = useState(new Date());
+
     const noteIcon = <FontAwesomeIcon icon={faNoteSticky} />
 
     const eventHandler = (e) => {
@@ -43,12 +47,28 @@ export function Project({ id, projectList }) {
         toggleShowA();
     }
 
+    const updateCreatedAt = (date) => {
+        setStartDate(date);
+        const formatedDueDate = moment(date).format('YYYY/MM/DD');
+        console.log(formatedDueDate);
+        dispatch(updateCreatedDate([id, formatedDueDate]));
+
+    }
+
+    const updateDue = (date) => {
+        setStartDate(date);
+        const formatedDueDate = moment(date).format('YYYY/MM/DD');
+        console.log(formatedDueDate);
+        dispatch(updateDueDate([id, formatedDueDate]));
+
+    }
+
     return (  
         <li className="d-flex my-3 shadow-sm rounded bg-light" style={isComplete ? {opacity: '0.6'} : {opacity: '1'}} >
 
             <Button id="completed-btn" className="btn btn-primary col-1" onClick={(e) => eventHandler(e.target)}>{isComplete ? 'True' : 'False'}</Button>
             <div className="col-4"><div className="row"><div className="col-12">{projectName}</div></div></div>
-            <div className="col-3 d-flex"> <Calendar dueDate={dueDate} id={id}/></div>
+            <div className="col-3 d-flex"> <Calendar databaseDate={dueDate} updateDate={updateDue}/></div>
 
             <OverlayTrigger 
                 trigger="click" 
