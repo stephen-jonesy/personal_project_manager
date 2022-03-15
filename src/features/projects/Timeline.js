@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { ProjectTimeline } from './components/ProjectTimeline';
+import Button from 'react-bootstrap/Button';
 
 export function Timeline() {
     const selectProjects = (state) => state.projects;
@@ -40,14 +41,12 @@ export function Timeline() {
         item.timeline = arr[index];
 
     });
-
-
  
     console.log(array);
 
     return (  
         <div className="">
-            <div>Timeline</div>
+            <button>Timeline</button>
 
             {array.map((project) => (
                 < ProjectTimeline key={project.projectId} id={project.projectId} projectList={projects} timelineSort={project.timeline} />
