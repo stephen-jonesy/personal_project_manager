@@ -10,7 +10,13 @@ export function Timeline() {
         {...item, timeline: 0}),
 
     );
+    const [list, setList] = useState([]);
     let arr = [];
+
+    // useEffect(() => {
+    //     setList(array);
+
+    // }, []);
 
     array.forEach((item, index) => {
         const createdAt = new Date(item.createdAt);
@@ -37,19 +43,34 @@ export function Timeline() {
 
             
         }
-        console.log(arr);
         item.timeline = arr[index];
 
     });
- 
-    console.log(array);
+
+    useEffect(() => {
+        setList(array);
+    }, [JSON.stringify(array)]);
+
+    const timelineSort = () => {
+        array.sort((a, b) => {
+            return b.timeline - a.timeline;
+        });
+        setList(array);
+    };
+    console.log(list);    
+
+    // useEffect(() => {
+    //     setList(array);
+    //     console.log(list);
+
+    // }, [JSON.stringify(array)]);
 
     return (  
         <div className="">
-            <button>Timeline</button>
+            <button onClick={timelineSort}>Timeline</button>
 
-            {array.map((project) => (
-                < ProjectTimeline key={project.projectId} id={project.projectId} projectList={projects} timelineSort={project.timeline} />
+            {list.map((project) => (
+                < ProjectTimeline key={project.projectId} id={project.projectId} projectList={list} timelineSort={project.timeline} />
             ))}
 
         </div>
