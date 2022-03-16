@@ -63,6 +63,45 @@ export const projectsSlice = createSlice({
 
         },
 
+        calculateTimelinePercentage: (state) => {
+
+            let arr = [];
+        
+            state.forEach((item, index) => {
+                item.timeline = 0;
+                const createdAt = new Date(item.createdAt);
+                const dueDate = new Date(item.dueDate);
+            
+                const start = createdAt;
+                const end = dueDate;
+                const today = new Date();
+            
+                const q = Math.abs(today-start);
+                const d = Math.abs(end-start);
+        
+                if(start > today) {
+                    let rounded = 0;
+                    arr.push(rounded);
+        
+                } else if (today > end) {
+                    let rounded = 100;
+                    arr.push(rounded);
+            
+                } else {
+                    let rounded = Math.round((q/d)*100);
+                    arr.push(rounded);
+        
+                    
+                }
+                item.timeline = arr[index];
+        
+            });
+            console.log(current(state));
+            return state;
+
+        },
+
+
         sortProjects: (state, action) => {
 
             const sortType = action.payload;
@@ -103,6 +142,14 @@ export const projectsSlice = createSlice({
                 return sorted;
 
             } 
+            if(sortType === 'timeline') {
+                const sorted = [...state].sort((a, b) => {
+                    return b.timeline - a.timeline;
+                });    
+    
+                return sorted;
+
+            } 
             
             else {
                 const sorted = [...state].sort(function(a, b){
@@ -125,7 +172,7 @@ export const projectsSlice = createSlice({
     }
 });
 
-export const { addProject, removeProject, toggleCompleted, togglePriority, updateCreatedDate, updateDueDate, updateNote, sortProjects } = projectsSlice.actions;
+export const { addProject, removeProject, toggleCompleted, togglePriority, updateCreatedDate, updateDueDate, updateNote, calculateTimelinePercentage, sortProjects } = projectsSlice.actions;
 
 export default projectsSlice.reducer;
 
