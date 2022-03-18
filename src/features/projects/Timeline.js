@@ -28,23 +28,6 @@ export function Timeline() {
 
     }
 
-    // useEffect(() => {
-    //     setList(array);
-    // }, [JSON.stringify(array)]);
-
-    // const timelineSort = () => {
-    //     array.sort((a, b) => {
-    //         return b.timeline - a.timeline;
-    //     });
-    //     setList(array);
-    // };
-
-    // useEffect(() => {
-    //     setList(array);
-    //     console.log(list);
-
-    // }, [JSON.stringify(array)]);
-
     return (  
         <div className="">
             <button onClick={clicked}>Timeline</button>
