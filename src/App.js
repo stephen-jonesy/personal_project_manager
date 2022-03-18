@@ -1,5 +1,5 @@
 import './App.css';
-import { Projects } from './pages/list/Projects.js';
+import { List } from './pages/list/List';
 import { Timeline } from './pages/timeline/Timeline';
 import {
   BrowserRouter as Router,
@@ -33,7 +33,7 @@ function App() {
             <Timeline />
           </Route>
           <Route path="/">
-            <Projects />
+            <List />
           </Route>
         </Switch>
       </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {Button, OverlayTrigger, Tooltip, Toast} from 'react-bootstrap';
+import CloseButton from 'react-bootstrap/CloseButton'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faNoteSticky } from '@fortawesome/free-solid-svg-icons'
 import { addProject } from '../../../features/projects/projectsSlice';
@@ -87,7 +88,7 @@ export function NewProjectForm({ toggleShow }) {
                     </Toast.Header>
                     <Toast.Body>
                         <textarea value={noteValue} placeholder="Add a note" onChange={(e) => {setNote(e.target.value)}}></textarea>
-                        <button type="submit" >Update Note</button>
+                        <button type="button" onClick={toggleShowA}>Update Note</button>
                     </Toast.Body>
                 </Toast>
             </div>
