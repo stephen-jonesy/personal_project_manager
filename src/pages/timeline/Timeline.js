@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { ProjectTimeline } from './components/ProjectTimeline';
-import { calculateTimelinePercentage, sortProjects } from './projectsSlice';
+import { calculateTimelinePercentage, sortProjects } from '../../features/projects/projectsSlice';
 
 export function Timeline() {
 

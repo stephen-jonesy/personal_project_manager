@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {Button, OverlayTrigger, Tooltip, Toast} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faNoteSticky } from '@fortawesome/free-solid-svg-icons'
-import { addProject } from '../projectsSlice';
+import { addProject } from '../../../features/projects/projectsSlice';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { v4 as uuid } from 'uuid';

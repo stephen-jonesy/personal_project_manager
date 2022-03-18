@@ -1,9 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateDueDate } from '../projectsSlice';
+import { updateDueDate, sortProjects } from '../../../features/projects/projectsSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
-import { sortProjects } from '../projectsSlice';
 
 export function ProjectToolbar() {
     const chevron = <FontAwesomeIcon icon={faChevronUp} size="sm" />;

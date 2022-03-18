@@ -1,6 +1,6 @@
 import './App.css';
-import { Projects } from './features/projects/Projects';
-import { Timeline } from './features/projects/Timeline';
+import { Projects } from './pages/list/Projects.js';
+import { Timeline } from './pages/timeline/Timeline';
 import {
   BrowserRouter as Router,
   Switch,

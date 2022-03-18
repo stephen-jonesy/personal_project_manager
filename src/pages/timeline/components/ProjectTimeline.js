@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { ProgressBar} from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { updateDueDate, updateCreatedDate } from '../projectsSlice';
+import { updateDueDate, updateCreatedDate } from '../../../features/projects/projectsSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Calendar } from './Calendar';
+import { Calendar } from '../../../common/Calendar';
 import moment from 'moment';
 
 <FontAwesomeIcon icon="fa-solid fa-note-sticky" />

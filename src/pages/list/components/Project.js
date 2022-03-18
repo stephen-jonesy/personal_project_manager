@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeProject, toggleCompleted, togglePriority, updateNote, updateCreatedDate, updateDueDate } from '../projectsSlice';
-import { Calendar } from './Calendar';
+import { removeProject, toggleCompleted, togglePriority, updateNote, updateCreatedDate, updateDueDate } from '../../../features/projects/projectsSlice';
+import { Calendar } from '../../../common/Calendar';
 import {Button, OverlayTrigger, Overlay, Tooltip, Toast} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faNoteSticky } from '@fortawesome/free-solid-svg-icons';

@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import DatePicker from "react-datepicker";
 import { useDispatch } from 'react-redux';
 import "react-datepicker/dist/react-datepicker.css";
-import { updateDueDate } from '../projectsSlice';
+import { updateDueDate } from '../features/projects/projectsSlice.js';
 import moment from 'moment';
 
 export function Calendar({ databaseDate, updateDate }) {

@@ -163,12 +163,7 @@ export const projectsSlice = createSlice({
             }
             
         },
-        // sortProjects: (state, action) => {
-        //     [...state].sort((a, b) => {
-        //         return a - b;
-        //     });
-              
-        // }
+
     }
 });
 
