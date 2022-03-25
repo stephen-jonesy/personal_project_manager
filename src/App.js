@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import { List } from './pages/list/List';
 import { Timeline } from './pages/timeline/Timeline';
 import {
