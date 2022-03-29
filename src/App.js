@@ -1,4 +1,5 @@
 import './App.scss';
+import { Header } from './common/Header';
 import { List } from './pages/list/List';
 import { Timeline } from './pages/timeline/Timeline';
 import {
@@ -11,32 +12,23 @@ import {
 function App() {
 
   return (
-    <div className="App container">
+    <div className="App  d-flex">
       <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/timelines">Timelines</Link>
-            </li>
-
-          </ul>
-        </nav>
+        <Header/>
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/timelines">
-            <Timeline />
-          </Route>
-          <Route path="/">
-            <List />
-          </Route>
-        </Switch>
-      </div>
+        <div className="col">
+          <Switch>
+            <Route path="/timelines">
+              <Timeline />
+            </Route>
+            <Route path="/">
+              <List />
+            </Route>
+          </Switch>
+        </div>
+
     </Router>
 
     </div>
