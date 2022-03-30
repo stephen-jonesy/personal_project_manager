@@ -32,11 +32,20 @@ export function List() {
     };
 
     return (  
-        <div className="">
+        
+        <div className="list-container">
+        <style type="text/css">
+            {`
+            .btn-flat {
+            background-color: rgba(9, 200, 225, 0.8);
+            color: white;
+            }
+            `}
+        </style>
+            <button  onClick={toggleShow} className="mb-4 project-button" >{!show ? 'New project' : 'Dismiss Project'}</button>
             < ProjectToolbar />
-            <Button onClick={toggleShow} className="mb-4">{!show ? 'New project' : 'Dismiss Project'}</Button>
 
-            <ul className="project-list ">
+            <ul className="">
 
                 {renderNewProjectForm()}
 
@@ -47,6 +56,7 @@ export function List() {
                 </ReactSortable>
             </ul>
         </div>
+
     );
 }
 

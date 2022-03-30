@@ -64,30 +64,61 @@ export function Project({ id, projectList }) {
     }
 
     return (  
-        <li className="d-flex my-3 shadow-sm rounded bg-light" style={isComplete ? {opacity: '0.6'} : {opacity: '1'}} >
+        <li className="d-flex my-3 shadow-sm rounded bg-light project-container" style={isComplete ? {opacity: '0.6'} : {opacity: '1'}} >
+
+            {/* Completed column */}
 
             <Button id="completed-btn" className="btn btn-primary col-1" onClick={(e) => eventHandler(e.target)}>{isComplete ? 'True' : 'False'}</Button>
-            <div className="col-4"><div className="row"><div className="col-12">{projectName}</div></div></div>
-            <div className="col-3 d-flex"> <Calendar databaseDate={dueDate} updateDate={updateDue}/></div>
+            <div className="col-2"><div className="row"><div className="col-12">{projectName}</div></div></div>
 
-            <OverlayTrigger 
-                trigger="click" 
-                placement="bottom" 
-                rootClose="true"
-                overlay={
-                    <Tooltip id="overlay" >
-                        <Button id="priority-toggle-btn" onClick={(e) => eventHandler(e.target)}>None</Button>
-                        <Button id="priority-toggle-btn" onClick={(e) => eventHandler(e.target)}>Low</Button>
-                        <Button id="priority-toggle-btn" onClick={(e) => eventHandler(e.target)}>Medium</Button>
-                        <Button id="priority-toggle-btn" onClick={(e) => eventHandler(e.target)}>High</Button>
-                    </Tooltip>
-                    
-                }
-            >
-                <Button className="col-1 btn-secondary"> {priority}</Button>
-            </OverlayTrigger>
+            {/* Due column */}
+
+            <div className="col-3 d-flex"> <Calendar databaseDate={dueDate} updateDate={updateDue}/></div>
+            
+            {/* Priority column */}
+            <div className="col-2">
+                <OverlayTrigger 
+                    trigger="click" 
+                    placement="bottom" 
+                    rootClose="true"
+                    overlay={
+                        <Tooltip id="overlay" >
+                            <Button id="priority-toggle-btn" onClick={(e) => eventHandler(e.target)}>None</Button>
+                            <Button id="priority-toggle-btn" onClick={(e) => eventHandler(e.target)}>Low</Button>
+                            <Button id="priority-toggle-btn" onClick={(e) => eventHandler(e.target)}>Medium</Button>
+                            <Button id="priority-toggle-btn" onClick={(e) => eventHandler(e.target)}>High</Button>
+                        </Tooltip>
+                        
+                    }
+                >
+                    <Button className="col-6 btn-secondary"> {priority}</Button>
+                </OverlayTrigger>
+            </div>
+
+            {/* Status column */}
 
             <div className="col-2">
+                <OverlayTrigger 
+                    trigger="click" 
+                    placement="bottom" 
+                    rootClose="true"
+                    overlay={
+                        <Tooltip id="overlay" >
+                            <Button id="priority-toggle-btn" >None</Button>
+                            <Button id="priority-toggle-btn" >Low</Button>
+                            <Button id="priority-toggle-btn" >Medium</Button>
+                            <Button id="priority-toggle-btn" >High</Button>
+                        </Tooltip>
+                        
+                    }
+                >
+                    <Button className="col-6 btn-secondary"> {priority}</Button>
+                </OverlayTrigger>
+            </div>
+
+            {/* Notes column */}
+
+            <div className="col-1">
                 <Button onClick={toggleShowA} className="">Notes {noteIcon}</Button>
                 <Toast show={showA} onClose={toggleShowA} style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
                     <Toast.Header>
@@ -107,6 +138,9 @@ export function Project({ id, projectList }) {
                     </Toast.Body>
                 </Toast>
             </div>
+
+            {/* Delete column */}
+
             <div className="col-1"><button id="delete-btn" className="btn" onClick={(e) => eventHandler(e.target)}>x</button></div>
         </li>
 

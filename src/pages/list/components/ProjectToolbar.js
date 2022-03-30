@@ -23,15 +23,15 @@ export function ProjectToolbar() {
     }, [SortType]);
 
     return (  
-        <ul className="project-list ">
-            <li className="d-flex mt-3 mb-4 shadow-sm rounded">
+        <ul className="project-toolbar ">
+            <li className="d-flex mt-5 mb-4 ">
                 <div className="col-1">
                     <button value="isComplete" onClick={(e) => sortHandler(e)} style={SortType === "isComplete" ? {opacity: '0.6'} : {opacity: '1'}}>
-                        Done {chevron}
+                        Complete {chevron}
                     </button>
                     
                 </div>
-                <div className="col-4">
+                <div className="col-2">
                     <button value="projectName" onClick={(e) => sortHandler(e)} style={SortType === "projectName" ? {opacity: '0.6'} : {opacity: '1'}}>
                         Projects {chevron}
                     </button>
@@ -41,9 +41,14 @@ export function ProjectToolbar() {
                         Due {chevron}
                     </button>
                 </div>
-                <div className="col-1">
+                <div className="col-2">
                     <button value="Priority" onClick={(e) => sortHandler(e)} style={SortType === "Priority" ? {opacity: '0.6'} : {opacity: '1'}}>
                         Priority {chevron}
+                    </button>
+                </div>
+                <div className="col-2">
+                    <button value="status" onClick={(e) => sortHandler(e)} style={SortType === "status" ? {opacity: '0.6'} : {opacity: '1'}}>
+                        Status {chevron}
                     </button>
                 </div>
                 <div className="col-2">

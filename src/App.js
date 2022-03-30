@@ -1,5 +1,5 @@
 import './App.scss';
-import { Header } from './common/Header';
+import { Header } from './common/Header/Header';
 import { List } from './pages/list/List';
 import { Timeline } from './pages/timeline/Timeline';
 import {
@@ -19,14 +19,17 @@ function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <div className="col">
-          <Switch>
-            <Route path="/timelines">
-              <Timeline />
-            </Route>
-            <Route path="/">
-              <List />
-            </Route>
-          </Switch>
+          <div className="sub-header"></div>
+          <div className="d-flex justify-content-center">
+            <Switch>
+              <Route path="/timelines">
+                <Timeline />
+              </Route>
+              <Route path="/">
+                <List />
+              </Route>
+            </Switch>
+          </div>
         </div>
 
     </Router>

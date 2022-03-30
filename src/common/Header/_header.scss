@@ -1,5 +1,5 @@
 
-@use 'variables';
+@use '../variables';
 
 header {
     background-color: variables.$background-primary;
@@ -8,7 +8,7 @@ header {
 }
 
 .nav-container {
-    margin-top: 30px;
+    margin-top: 40px;
     border-bottom: 1px solid rgba(47, 47, 47, 0.1);
     height: 300px;
 
@@ -23,32 +23,38 @@ nav {
 nav ul {
     list-style-type: none;
     padding: 0;
-    margin-left: 28px;
+    margin-left: 25px;
     letter-spacing: 0.05em;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
-
 }
 
 nav ul li a{
     text-decoration: none;
-    color: #48484e;
-    opacity: 80%;
+    color: rgba(72, 72, 78, 0.9);
     font-weight: 400;
+    &:hover {
+        color: variables.$active;
+
+    }
 }
 
 .logo-container {
-    height: 65px;
+    height: 60px;
     border-bottom: 1px solid rgba(47, 47, 47, 0.1);
 
 }
 
 .logo-container img {
-    margin-left: 28px;
-    height: 35px;
+    margin: 6px 0 0 25px;
+    height: 32px;
+    
 
 }
 
+.is-active {
+    color: variables.$active;
+}
