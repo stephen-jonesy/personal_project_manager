@@ -70,7 +70,7 @@ export function Project({ id, projectList }) {
 
                 {/* Completed column */}
 
-                <div className="check-btn-container col-1">
+                <div className="completed-btn-container col-1">
                     <button id="completed-btn" className="completed-btn btn btn-primary" onClick={(e) => eventHandler(e.target)}>{checkIcon}</button>
                 </div>
 
