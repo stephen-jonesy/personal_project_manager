@@ -4,10 +4,9 @@ import { removeProject, toggleCompleted, togglePriority, updateNote, updateCreat
 import { Calendar } from '../../../common/Calendar';
 import {Button, OverlayTrigger, Overlay, Tooltip, Toast} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faNoteSticky } from '@fortawesome/free-solid-svg-icons';
+import { faNoteSticky, faCheck } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
 
-<FontAwesomeIcon icon="fa-solid fa-note-sticky" />
 
 export function Project({ id, projectList }) {
     const project = () => {
@@ -21,6 +20,7 @@ export function Project({ id, projectList }) {
     const [startDate, setStartDate] = useState(new Date());
 
     const noteIcon = <FontAwesomeIcon icon={faNoteSticky} />
+    const checkIcon = <FontAwesomeIcon icon={faCheck} />
 
     const eventHandler = (e) => {
 
@@ -64,85 +64,98 @@ export function Project({ id, projectList }) {
     }
 
     return (  
-        <li className="d-flex my-3 shadow-sm rounded bg-light project-container" style={isComplete ? {opacity: '0.6'} : {opacity: '1'}} >
+        <div className="project-container" style={isComplete ? {opacity: '0.6'} : {opacity: '1'}}>
 
-            {/* Completed column */}
+            <li className="project d-flex"  >
 
-            <Button id="completed-btn" className="btn btn-primary col-1" onClick={(e) => eventHandler(e.target)}>{isComplete ? 'True' : 'False'}</Button>
-            <div className="col-2"><div className="row"><div className="col-12">{projectName}</div></div></div>
+                {/* Completed column */}
 
-            {/* Due column */}
+                <div className="check-btn-container col-1">
+                    <button id="completed-btn" className="completed-btn btn btn-primary" onClick={(e) => eventHandler(e.target)}>{checkIcon}</button>
+                </div>
 
-            <div className="col-3 d-flex"> <Calendar databaseDate={dueDate} updateDate={updateDue}/></div>
-            
-            {/* Priority column */}
-            <div className="col-2">
-                <OverlayTrigger 
-                    trigger="click" 
-                    placement="bottom" 
-                    rootClose="true"
-                    overlay={
-                        <Tooltip id="overlay" >
-                            <Button id="priority-toggle-btn" onClick={(e) => eventHandler(e.target)}>None</Button>
-                            <Button id="priority-toggle-btn" onClick={(e) => eventHandler(e.target)}>Low</Button>
-                            <Button id="priority-toggle-btn" onClick={(e) => eventHandler(e.target)}>Medium</Button>
-                            <Button id="priority-toggle-btn" onClick={(e) => eventHandler(e.target)}>High</Button>
-                        </Tooltip>
-                        
-                    }
-                >
-                    <Button className="col-6 btn-secondary"> {priority}</Button>
-                </OverlayTrigger>
-            </div>
 
-            {/* Status column */}
+                {/* Project Name column */}
 
-            <div className="col-2">
-                <OverlayTrigger 
-                    trigger="click" 
-                    placement="bottom" 
-                    rootClose="true"
-                    overlay={
-                        <Tooltip id="overlay" >
-                            <Button id="priority-toggle-btn" >None</Button>
-                            <Button id="priority-toggle-btn" >Low</Button>
-                            <Button id="priority-toggle-btn" >Medium</Button>
-                            <Button id="priority-toggle-btn" >High</Button>
-                        </Tooltip>
-                        
-                    }
-                >
-                    <Button className="col-6 btn-secondary"> {priority}</Button>
-                </OverlayTrigger>
-            </div>
+                <div className="col-2"><div className="row"><div className="col">{projectName}</div></div></div>
 
-            {/* Notes column */}
+                {/* Due column */}
 
-            <div className="col-1">
-                <Button onClick={toggleShowA} className="">Notes {noteIcon}</Button>
-                <Toast show={showA} onClose={toggleShowA} style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
-                    <Toast.Header>
-                        <img
-                        src="holder.js/20x20?text=%20"
-                        className="rounded me-2"
-                        alt=""
-                        />
-                        <strong className="me-auto">Note</strong>
-                        <small>{projectName}</small>
-                    </Toast.Header>
-                    <Toast.Body>
-                    <form type="submit">
-                        <textarea value={noteValue} placeholder="Add a note" onChange={(e) => {setNote(e.target.value)}}></textarea>
-                        <button type="submit" onClick={formSubmit}>Update Note</button>
-                    </form>
-                    </Toast.Body>
-                </Toast>
-            </div>
+                <div className="col-3 d-flex"> <Calendar databaseDate={dueDate} updateDate={updateDue}/></div>
+                
+                {/* Priority column */}
+                <div className="col-2">
+                    <OverlayTrigger 
+                        trigger="click" 
+                        placement="bottom" 
+                        rootClose="true"
+                        overlay={
+                            <Tooltip id="overlay" >
+                                <Button id="priority-toggle-btn" onClick={(e) => eventHandler(e.target)}>None</Button>
+                                <Button id="priority-toggle-btn" onClick={(e) => eventHandler(e.target)}>Low</Button>
+                                <Button id="priority-toggle-btn" onClick={(e) => eventHandler(e.target)}>Medium</Button>
+                                <Button id="priority-toggle-btn" onClick={(e) => eventHandler(e.target)}>High</Button>
+                            </Tooltip>
+                            
+                        }
+                    >
+                        <Button className="col-6 btn-secondary"> {priority}</Button>
+                    </OverlayTrigger>
+                </div>
 
-            {/* Delete column */}
+                {/* Status column */}
 
-            <div className="col-1"><button id="delete-btn" className="btn" onClick={(e) => eventHandler(e.target)}>x</button></div>
-        </li>
+                <div className="col-2">
+                    <OverlayTrigger 
+                        trigger="click" 
+                        placement="bottom" 
+                        rootClose="true"
+                        overlay={
+                            <Tooltip id="overlay" >
+                                <Button id="priority-toggle-btn" >None</Button>
+                                <Button id="priority-toggle-btn" >Low</Button>
+                                <Button id="priority-toggle-btn" >Medium</Button>
+                                <Button id="priority-toggle-btn" >High</Button>
+                            </Tooltip>
+                            
+                        }
+                    >
+                        <Button className="col-6 btn-secondary"> {priority}</Button>
+                    </OverlayTrigger>
+                </div>
+
+                {/* Notes column */}
+
+                <div className="col-1">
+                    <Button onClick={toggleShowA} className=""> {noteIcon}</Button>
+                    <Toast show={showA} onClose={toggleShowA} style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
+                        <Toast.Header>
+                            <img
+                            src="holder.js/20x20?text=%20"
+                            className="rounded me-2"
+                            alt=""
+                            />
+                            <strong className="me-auto">Note</strong>
+                            <small>{projectName}</small>
+                        </Toast.Header>
+                        <Toast.Body>
+                        <form type="submit">
+                            <textarea value={noteValue} placeholder="Add a note" onChange={(e) => {setNote(e.target.value)}}></textarea>
+                            <button type="submit" onClick={formSubmit}>Update Note</button>
+                        </form>
+                        </Toast.Body>
+                    </Toast>
+                </div>
+
+                {/* Delete column */}
+
+                <div className="col-1"><button id="delete-btn" className="btn" onClick={(e) => eventHandler(e.target)}>x</button></div>
+
+            </li>
+
+            <div className="shadow-container"></div>
+
+        </div>
 
     );
 };
