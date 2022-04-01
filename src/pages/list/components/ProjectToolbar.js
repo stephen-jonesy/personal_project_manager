@@ -51,7 +51,7 @@ export function ProjectToolbar() {
                         Status {chevron}
                     </button>
                 </div>
-                <div className="col-2">
+                <div className="col-1">
                     <button value="Notes" onClick={(e) => sortHandler(e)} style={SortType === "Notes" ? {opacity: '0.6'} : {opacity: '1'}}>
                         Notes {chevron}
                     </button>

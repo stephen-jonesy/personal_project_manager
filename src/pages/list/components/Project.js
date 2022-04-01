@@ -4,8 +4,9 @@ import { removeProject, toggleCompleted, togglePriority, updateNote, updateCreat
 import { Calendar } from '../../../common/Calendar';
 import {Button, OverlayTrigger, Overlay, Tooltip, Toast} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faNoteSticky, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faNoteSticky, faCheck, faGrip } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
+import { GripVertical, Sticky, Trash} from "react-bootstrap-icons";
 
 
 export function Project({ id, projectList }) {
@@ -21,7 +22,9 @@ export function Project({ id, projectList }) {
 
     const noteIcon = <FontAwesomeIcon icon={faNoteSticky} />
     const checkIcon = <FontAwesomeIcon icon={faCheck} />
+    const gripIcon = <FontAwesomeIcon icon={faGrip} />
 
+    
     const eventHandler = (e) => {
 
         if (e.id === "completed-btn") {
@@ -74,15 +77,19 @@ export function Project({ id, projectList }) {
                     <button id="completed-btn" className="completed-btn btn btn-primary" onClick={(e) => eventHandler(e.target)}>{checkIcon}</button>
                 </div>
 
+                <div className="devider"></div>
+
 
                 {/* Project Name column */}
 
                 <div className="col-2"><div className="row"><div className="col">{projectName}</div></div></div>
+                <div className="devider"></div>
 
                 {/* Due column */}
 
                 <div className="col-3 d-flex"> <Calendar databaseDate={dueDate} updateDate={updateDue}/></div>
-                
+                <div className="devider"></div>
+
                 {/* Priority column */}
                 <div className="col-2">
                     <OverlayTrigger 
@@ -99,9 +106,10 @@ export function Project({ id, projectList }) {
                             
                         }
                     >
-                        <Button className="col-6 btn-secondary"> {priority}</Button>
+                        <button className="priority-btn col-6 btn-secondary" style={{background: priority === "None" ? "#48484ecc" : priority === "Low" ? "#33CE71" : priority === "Medium" ? "#FA8035" : priority === "High" ? "#e01414cc" : "#FA8035" }}> {priority}</button>
                     </OverlayTrigger>
                 </div>
+                <div className="devider"></div>
 
                 {/* Status column */}
 
@@ -123,11 +131,12 @@ export function Project({ id, projectList }) {
                         <Button className="col-6 btn-secondary"> {priority}</Button>
                     </OverlayTrigger>
                 </div>
+                <div className="devider"></div>
 
                 {/* Notes column */}
 
                 <div className="col-1">
-                    <Button onClick={toggleShowA} className=""> {noteIcon}</Button>
+                    <button onClick={toggleShowA} className="note-btn"> <Sticky width="24" height="24" color="#48484e99"/></button>
                     <Toast show={showA} onClose={toggleShowA} style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
                         <Toast.Header>
                             <img
@@ -146,14 +155,20 @@ export function Project({ id, projectList }) {
                         </Toast.Body>
                     </Toast>
                 </div>
+                <div className="devider"></div>
 
                 {/* Delete column */}
 
-                <div className="col-1"><button id="delete-btn" className="btn" onClick={(e) => eventHandler(e.target)}>x</button></div>
+                <div className="col">
+                    <button id="delete-btn" className="btn" onClick={(e) => eventHandler(e.target)}>
+                        <Trash width="22" height="22" color="#48484e99"/>
+                    </button>
+                </div>
 
             </li>
 
             <div className="shadow-container"></div>
+            <div className="grab-icon">< GripVertical  /></div>
 
         </div>
 
