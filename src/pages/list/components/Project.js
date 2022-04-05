@@ -1,29 +1,26 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeProject, toggleCompleted, togglePriority, updateNote, updateCreatedDate, updateDueDate } from '../../../features/projects/projectsSlice';
+import { removeProject, toggleCompleted, togglePriority, toggleStatus, updateNote, updateCreatedDate, updateDueDate } from '../../../features/projects/projectsSlice';
 import { Calendar } from '../../../common/Calendar';
 import {Button, OverlayTrigger, Overlay, Tooltip, Toast} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faNoteSticky, faCheck, faGrip } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faGrip } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
-import { GripVertical, Sticky, Trash} from "react-bootstrap-icons";
+import { GripVertical, Sticky, Trash, PencilSquare} from "react-bootstrap-icons";
 
 
 export function Project({ id, projectList }) {
     const project = () => {
         return projectList.find((project) => project.projectId === id);
     };
-    const {projectName, dueDate, isComplete, note, priority, projectId} = project();
+    const {projectName, dueDate, isComplete, note, priority, status, projectId} = project();
     const dispatch = useDispatch();
     const [showA, setShowA] = useState(false);
     const toggleShowA = () => setShowA(!showA);
     const [noteValue, setNote] = useState(note);
     const [startDate, setStartDate] = useState(new Date());
-
-    const noteIcon = <FontAwesomeIcon icon={faNoteSticky} />
     const checkIcon = <FontAwesomeIcon icon={faCheck} />
     const gripIcon = <FontAwesomeIcon icon={faGrip} />
-
     
     const eventHandler = (e) => {
 
@@ -39,6 +36,10 @@ export function Project({ id, projectList }) {
 
         if (e.id === "priority-toggle-btn") {
             dispatch(togglePriority([id, e.innerText]));
+
+        };
+        if (e.id === "status-toggle-btn") {
+            dispatch(toggleStatus([id, e.innerText]));
 
         };
 
@@ -67,7 +68,9 @@ export function Project({ id, projectList }) {
     }
 
     return (  
+
         <div className="project-container" style={isComplete ? {opacity: '0.6'} : {opacity: '1'}}>
+            <div className="shadow-container"></div>
 
             <li className="project d-flex"  >
 
@@ -82,12 +85,12 @@ export function Project({ id, projectList }) {
 
                 {/* Project Name column */}
 
-                <div className="col-2"><div className="row"><div className="col">{projectName}</div></div></div>
+                <div className="col-2"><div className="row"><div className="col">{projectName}</div><div >< PencilSquare /></div></div></div>
                 <div className="devider"></div>
 
                 {/* Due column */}
 
-                <div className="col-3 d-flex"> <Calendar databaseDate={dueDate} updateDate={updateDue}/></div>
+                <div className="due-column col-3 "> <Calendar databaseDate={dueDate} updateDate={updateDue}/></div>
                 <div className="devider"></div>
 
                 {/* Priority column */}
@@ -120,15 +123,15 @@ export function Project({ id, projectList }) {
                         rootClose="true"
                         overlay={
                             <Tooltip id="overlay" >
-                                <Button id="priority-toggle-btn" >None</Button>
-                                <Button id="priority-toggle-btn" >Low</Button>
-                                <Button id="priority-toggle-btn" >Medium</Button>
-                                <Button id="priority-toggle-btn" >High</Button>
+                                <Button id="status-toggle-btn" onClick={(e) => eventHandler(e.target)}>None</Button>
+                                <Button id="status-toggle-btn" onClick={(e) => eventHandler(e.target)}>Stuck</Button>
+                                <Button id="status-toggle-btn" onClick={(e) => eventHandler(e.target)}>Doing</Button>
+                                <Button id="status-toggle-btn" onClick={(e) => eventHandler(e.target)}>Done</Button>
                             </Tooltip>
                             
                         }
                     >
-                        <Button className="col-6 btn-secondary"> {priority}</Button>
+                        <button className="priority-btn col-6 btn-secondary" style={{background: status === "None" ? "#48484ecc" : status === "Done" ? "#33CE71" : status === "Doing" ? "#FA8035" : status === "Stuck" ? "#e01414cc" : "#FA8035" }}> {status}</button>
                     </OverlayTrigger>
                 </div>
                 <div className="devider"></div>
@@ -167,7 +170,6 @@ export function Project({ id, projectList }) {
 
             </li>
 
-            <div className="shadow-container"></div>
             <div className="grab-icon">< GripVertical  /></div>
 
         </div>

@@ -10,6 +10,7 @@ export const user = {
         isComplete: true,
         dueDate: '2022/03/11',
         priority: 'None',
+        status: 'Doing',
         note: 'Some stuff here',
         num: 2 
 
@@ -21,6 +22,7 @@ export const user = {
         isComplete: false,
         dueDate: '2023/04/10',
         priority: 'Low',
+        status: 'Stuck',
         note: '', 
         num: 1 
 
@@ -31,6 +33,7 @@ export const user = {
         isComplete: false,
         dueDate: '2022/03/09',
         priority: 'High',
+        status: 'Done',
         note: '',
         num: 3
 

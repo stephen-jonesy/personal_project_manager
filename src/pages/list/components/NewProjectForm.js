@@ -15,7 +15,8 @@ export function NewProjectForm({ toggleShow }) {
     const [showA, setShowA] = useState(false);
     const toggleShowA = () => setShowA(!showA);
     const [projectName, setName] = useState('');
-    const [Priority, setPriority] = useState('None');
+    const [priority, setPriority] = useState('None');
+    const [status, setStatus] = useState('None');
     const [noteValue, setNote] = useState('');
     const [dueDate, setDueDate] = useState(new Date());
     const noteIcon = <FontAwesomeIcon icon={faNoteSticky} />
@@ -37,7 +38,8 @@ export function NewProjectForm({ toggleShow }) {
             projectName: projectName, 
             small_id: small_id, 
             dueDate: formatedDueDate, 
-            Priority: Priority, 
+            priority: priority, 
+            status: status,
             createdAt: createdAt, 
             note: noteValue 
         };
@@ -71,7 +73,7 @@ export function NewProjectForm({ toggleShow }) {
                     
                 }
             >
-                <Button className="col-1 btn-secondary"> {Priority}</Button>
+                <Button className="col-1 btn-secondary"> {priority}</Button>
             </OverlayTrigger>
 
             <div className="col-2">

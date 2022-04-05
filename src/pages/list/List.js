@@ -31,6 +31,8 @@ export function List() {
         }
     };
 
+    console.log(list)
+
     return (  
         
         <div className="list-container">

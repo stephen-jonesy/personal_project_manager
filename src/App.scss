@@ -77,7 +77,6 @@
   top: 0;
   text-align: center;
   display: flex;  
-  align-items: center;
   
   font-size: 13px;
   height: 100%;
@@ -86,7 +85,6 @@
   background: #FFFFFF;
   box-shadow: 0px 0px 5px 1px rgba(89, 109, 125, 0.1);
   border-radius: 20px;
-  z-index: 10;
   color: #48484E;
   font-style: normal;
   font-weight: 400;
@@ -131,6 +129,25 @@
 
 }
 
+.project div {
+  margin: auto;
+}
+
+.date-container {
+  margin-top: 17px;
+
+}
+
+.react-datepicker__navigation {
+  z-index: 100;
+}
+
+.react-datepicker {
+  z-index: 999 ;
+}
+.example-custom-input {
+  height: 60px;
+}
 
 .shadow-container {
   position: absolute;
@@ -140,7 +157,6 @@
   background: #C0BDBD;
   box-shadow: 0px 0px 5px 1px rgba(89, 109, 125, 0.1);
   border-radius: 20px;
-  z-index: 1;
 
 }
 
@@ -156,10 +172,33 @@
   align-items: center;
 }
 
+
 .note-btn {
   all: unset;
 }
 
 svg {
   pointer-events: none;
+}
+
+
+
+//Calendar
+
+.date-container {
+  all: unset;
+  margin-top: 21px;
+
+}
+
+.react-datepicker__navigation {
+  z-index: 100;
+}
+
+.react-datepicker {
+  z-index: 999 ;
+}
+
+.example-custom-input {
+  height: 60px;
 }
