@@ -53,6 +53,14 @@ export const projectsSlice = createSlice({
 
         },
 
+        updateProjectName: (state,action) => {
+            const [id, projectName] = action.payload;
+
+
+            return state.map((project) =>
+                project.projectId === id ? {...project, projectName: projectName} : project);
+        },
+
         updateCreatedDate: (state, action) => {
             const [id, createdAt] = action.payload;
             return state.map((project) =>
@@ -178,7 +186,7 @@ export const projectsSlice = createSlice({
     }
 });
 
-export const { addProject, removeProject, toggleCompleted, togglePriority, toggleStatus, updateCreatedDate, updateDueDate, updateNote, calculateTimelinePercentage, sortProjects } = projectsSlice.actions;
+export const { addProject, removeProject, toggleCompleted, togglePriority, toggleStatus, updateProjectName, updateCreatedDate, updateDueDate, updateNote, calculateTimelinePercentage, sortProjects } = projectsSlice.actions;
 
 export default projectsSlice.reducer;
 

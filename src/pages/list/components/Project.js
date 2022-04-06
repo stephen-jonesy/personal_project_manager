@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeProject, toggleCompleted, togglePriority, toggleStatus, updateNote, updateCreatedDate, updateDueDate } from '../../../features/projects/projectsSlice';
+import { removeProject, toggleCompleted, togglePriority, toggleStatus, updateProjectName, updateNote, updateCreatedDate, updateDueDate } from '../../../features/projects/projectsSlice';
 import { Calendar } from '../../../common/Calendar';
 import {Button, OverlayTrigger, Overlay, Tooltip, Toast} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,6 +17,9 @@ export function Project({ id, projectList }) {
     const dispatch = useDispatch();
     const [showA, setShowA] = useState(false);
     const toggleShowA = () => setShowA(!showA);
+    const [showNameInput, setShowNameInput] = useState(false);
+    const toggleShowNameInput = () => setShowNameInput(!showNameInput);
+    const [projectNameValue, setName] = useState(projectName);
     const [noteValue, setNote] = useState(note);
     const [startDate, setStartDate] = useState(new Date());
     const checkIcon = <FontAwesomeIcon icon={faCheck} />
@@ -47,9 +50,24 @@ export function Project({ id, projectList }) {
 
     const formSubmit = (e) => {
         e.preventDefault();     
-        dispatch(updateNote([id, noteValue]));
-        toggleShowA();
+
+        if (e.target.id === "note-submit") {
+
+            dispatch(updateNote([id, noteValue]));
+            toggleShowA();
+            console.log("note submited")
+
+        }
+        if (e.target.id === "project-name-submit") {
+
+            dispatch(updateProjectName([id, projectNameValue]));
+            toggleShowNameInput();
+            console.log("project name submited");
+
+        }
+        
     }
+
 
     const updateCreatedAt = (date) => {
         setStartDate(date);
@@ -65,6 +83,19 @@ export function Project({ id, projectList }) {
         console.log(formatedDueDate);
         dispatch(updateDueDate([id, formatedDueDate]));
 
+    }
+
+    const showNameInputFunct = () => {
+
+        var strFirstThree = projectNameValue.substring(0,15);
+
+
+        if (!showNameInput) {
+            return <div className="col" >{strFirstThree}<div className="pencil-icon" onClick={toggleShowNameInput}>< PencilSquare /></div></div>;
+        } else {
+            return <form id="project-name-submit"type="submit" onSubmit={formSubmit} ><input className="project-name-input" value={projectNameValue}   onChange={(e) => {setName(e.target.value)}}></input></form>
+        }
+        
     }
 
     return (  
@@ -85,7 +116,7 @@ export function Project({ id, projectList }) {
 
                 {/* Project Name column */}
 
-                <div className="col-2"><div className="row"><div className="col">{projectName}</div><div >< PencilSquare /></div></div></div>
+                <div className="col-2 name-column">{showNameInputFunct()}</div>
                 <div className="devider"></div>
 
                 {/* Due column */}
@@ -153,7 +184,7 @@ export function Project({ id, projectList }) {
                         <Toast.Body>
                         <form type="submit">
                             <textarea value={noteValue} placeholder="Add a note" onChange={(e) => {setNote(e.target.value)}}></textarea>
-                            <button type="submit" onClick={formSubmit}>Update Note</button>
+                            <button type="submit" id="note-submit" onClick={formSubmit}>Update Note</button>
                         </form>
                         </Toast.Body>
                     </Toast>
