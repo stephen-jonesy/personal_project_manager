@@ -72,6 +72,10 @@
 
 }
 
+.new-project-container {
+  margin-top: 70px;
+}
+
 .project {
   position: absolute;
   top: 0;
@@ -175,6 +179,8 @@
 
 .note-btn {
   all: unset;
+  background-color: transparent !important;
+  border-color: transparent !important;
 }
 
 svg {

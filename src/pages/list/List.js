@@ -45,11 +45,12 @@ export function List() {
             `}
         </style>
             <button  onClick={toggleShow} className="mb-4 project-button" >{!show ? 'New project' : 'Dismiss Project'}</button>
+            {renderNewProjectForm()}
+
             < ProjectToolbar />
 
             <ul className="">
 
-                {renderNewProjectForm()}
 
                 <ReactSortable list={list} setList={setList}>
                     {list.map((project) => (
