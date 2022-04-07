@@ -55,18 +55,9 @@ export function NewProjectForm({ toggleShow }) {
 
                 <div className="project d-flex"  >
 
-                    {/* Completed column */}
-
-                    <div className="completed-btn-container col-1">
-
-                    </div>
-
-                    <div className="devider"></div>
-
-
                     {/* Project Name column */}
 
-                    <div className="col-2 name-column">
+                    <div className="col name-column">
                         <input placeholder="New Project"  value={projectName}   onChange={(e) => {setName(e.target.value)}} />
                     </div>
                     <div className="devider"></div>
@@ -145,11 +136,12 @@ export function NewProjectForm({ toggleShow }) {
 
                     {/* submit column */}
 
-                    <Button className="col-1" type="submit" value="Create" onClick={() => addProjectButton}>Create</Button>
+                    <div className="col-1">
+                        <Button className="create-btn" type="submit" value="Create" onClick={() => addProjectButton}>Create</Button>
+
+                    </div>
 
                 </div>
-
-                <div className="grab-icon">< GripVertical  /></div>
 
             </div>
         </form>

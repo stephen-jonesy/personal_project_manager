@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeProject, toggleCompleted, togglePriority, toggleStatus, updateProjectName, updateNote, updateCreatedDate, updateDueDate } from '../../../features/projects/projectsSlice';
 import { Calendar } from '../../../common/Calendar';
+import { Note } from './Note';
 import {Button, OverlayTrigger, Overlay, Tooltip, Toast} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faGrip } from '@fortawesome/free-solid-svg-icons';
@@ -89,7 +90,6 @@ export function Project({ id, projectList }) {
 
         var strFirstThree = projectNameValue.substring(0,15);
 
-
         if (!showNameInput) {
             return <div className="col" >{strFirstThree}<div className="pencil-icon" onClick={toggleShowNameInput}>< PencilSquare /></div></div>;
         } else {
@@ -169,26 +169,8 @@ export function Project({ id, projectList }) {
 
                 {/* Notes column */}
 
-                <div className="col-1">
-                    <button onClick={toggleShowA} className="note-btn"> <Sticky width="24" height="24" color="#48484e99"/></button>
-                    <Toast show={showA} onClose={toggleShowA} style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
-                        <Toast.Header>
-                            <img
-                            src="holder.js/20x20?text=%20"
-                            className="rounded me-2"
-                            alt=""
-                            />
-                            <strong className="me-auto">Note</strong>
-                            <small>{projectName}</small>
-                        </Toast.Header>
-                        <Toast.Body>
-                        <form type="submit">
-                            <textarea value={noteValue} placeholder="Add a note" onChange={(e) => {setNote(e.target.value)}}></textarea>
-                            <button type="submit" id="note-submit" onClick={formSubmit}>Update Note</button>
-                        </form>
-                        </Toast.Body>
-                    </Toast>
-                </div>
+                < Note project={project()} />
+
                 <div className="devider"></div>
 
                 {/* Delete column */}

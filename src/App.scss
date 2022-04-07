@@ -181,6 +181,8 @@
   all: unset;
   background-color: transparent !important;
   border-color: transparent !important;
+  color: #48484e99;
+
 }
 
 svg {
@@ -219,6 +221,16 @@ svg {
   right: 0;
 }
 
+// new project
+
+.create-btn {
+  height: 80%;
+  width: 80%;
+  font-size: 10px !important;
+  background-color: variables.$active !important;
+  border-color: variables.$active !important;
+}
+
 //Calendar
 
 .date-container {
@@ -237,4 +249,48 @@ svg {
 
 .example-custom-input {
   height: 60px;
+}
+
+// Note
+
+.note-active {
+  color: variables.$active;
+  opacity: .8;
+}
+
+.toast {
+  z-index: 999 !important;
+}
+.toast-body {
+  background-color: white;
+}
+
+.edit-container {
+  display: flex;
+  justify-content: center;
+  margin: 0 !important;
+}
+
+.edit-button {
+  all: unset;
+  height: 20px;
+  margin-top: 10px !important;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  svg {
+    margin-top: 3px;
+  }
+}
+
+.textarea-container {
+  display: flex;
+  flex-direction: column;
+}
+
+textarea {
+  resize: none;
+  overflow: hidden;
+  min-height: 50px;
+  max-height: 100px;
 }
