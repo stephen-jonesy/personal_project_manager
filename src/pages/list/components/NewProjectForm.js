@@ -58,7 +58,13 @@ export function NewProjectForm({ toggleShow }) {
                     {/* Project Name column */}
 
                     <div className="col name-column">
-                        <input placeholder="New Project"  value={projectName}   onChange={(e) => {setName(e.target.value)}} />
+                        <input 
+                            placeholder="New Project"  
+                            value={projectName}   
+                            onChange={(e) => {setName(e.target.value)}} 
+                            required
+                            
+                        />
                     </div>
                     <div className="devider"></div>
 

@@ -93,7 +93,7 @@ export function Project({ id, projectList }) {
         if (!showNameInput) {
             return <div className="col" >{strFirstThree}<div className="pencil-icon" onClick={toggleShowNameInput}>< PencilSquare /></div></div>;
         } else {
-            return <form id="project-name-submit"type="submit" onSubmit={formSubmit} ><input className="project-name-input" value={projectNameValue}   onChange={(e) => {setName(e.target.value)}}></input></form>
+            return <form id="project-name-submit"type="submit" onSubmit={formSubmit} ><input className="project-name-input" value={projectNameValue} required onChange={(e) => {setName(e.target.value)}}></input></form>
         }
         
     }
