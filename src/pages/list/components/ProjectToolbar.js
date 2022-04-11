@@ -10,17 +10,11 @@ export function ProjectToolbar() {
     const [SortType, setSortType] = useState('');
 
     const sortHandler = (e) => {
-        setSortType(e.target.value)
+        setSortType(e.target.value);
+        const payload = e.target.value;
+        dispatch(sortProjects(payload));
 
     };
-
-    useEffect(() => {
-        const payload = SortType;
-        dispatch(sortProjects(payload));
-        console.log(SortType)
-
-
-    }, [SortType]);
 
     return (  
         <ul className="project-toolbar ">
