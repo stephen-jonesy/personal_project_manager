@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/personal_project_manager/static/css/main.df180e49.css",
+    "main.js": "/personal_project_manager/static/js/main.407b94d4.js",
+    "static/media/Tuesday.svg": "/personal_project_manager/static/media/Tuesday.c88036d7cf75b730d69a8cc64caea78f.svg",
+    "index.html": "/personal_project_manager/index.html",
+    "main.df180e49.css.map": "/personal_project_manager/static/css/main.df180e49.css.map",
+    "main.407b94d4.js.map": "/personal_project_manager/static/js/main.407b94d4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.df180e49.css",
+    "static/js/main.407b94d4.js"
+  ]
+}
