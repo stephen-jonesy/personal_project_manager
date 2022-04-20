@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateNote } from '../../../features/projects/projectsSlice';
+import { updateNote } from '../features/projects/projectsSlice';
 import "react-datepicker/dist/react-datepicker.css";
 import moment from 'moment';
 import { Sticky } from "react-bootstrap-icons";
@@ -8,7 +8,7 @@ import { Row, Toast} from 'react-bootstrap';
 import { PencilSquare } from "react-bootstrap-icons";
 
 
-export function Note( {project}) {
+export function Note( {isNewProject, project, changeNote}) {
 
     const {projectName, dueDate, isComplete, note, priority, status, projectId} = project;
 
@@ -17,17 +17,33 @@ export function Note( {project}) {
     const [showNoteTextarea, setShowNoteTextarea] = useState(false);
 
     const dispatch = useDispatch();
-    const toggleshowNote = () => setShowNote(!showNote);
+    const toggleshowNote = (e) => {
+        if (showNote === false ) {
+            e.preventDefault()
+            setShowNote(!showNote)
+        } else {
+            setShowNote(!showNote)
+
+        }
+
+    };
     const toggleShowNoteTextarea = () => setShowNoteTextarea(!showNoteTextarea); 
 
     const updateNoteFunct = (e) =>  {
         e.preventDefault();     
-        dispatch(updateNote([projectId, noteValue]));
-        toggleshowNote();
-        console.log("note submited");
-        toggleShowNoteTextarea();
 
+        if (isNewProject === false) {
 
+            dispatch(updateNote([projectId, noteValue]));
+            toggleshowNote();
+            console.log("note submited");
+            toggleShowNoteTextarea();
+        }
+        else if (isNewProject === true) {
+            changeNote(noteValue)
+            toggleshowNote();
+
+        }
     }
 
     const showNameInputFunct = () => {
@@ -35,7 +51,7 @@ export function Note( {project}) {
         if (!showNoteTextarea) {
             return <div><div>{note}</div><div className="edit-container"><button className="edit-button" onClick={toggleShowNoteTextarea}><p className="mx-1">edit</p>< PencilSquare /></button></div></div>;
         } else {
-            return <form type="submit"><div className="textarea-container"><textarea  value={noteValue} placeholder="Add a note" onChange={(e) => {setNote(e.target.value)}}></textarea><button type="submit"  id="note-submit" onClick={updateNoteFunct}>Update Note</button></div></form>
+            return <div className="textarea-container"><textarea  value={noteValue} placeholder="Add a note" onChange={(e) => {setNote(e.target.value)}}></textarea><button type="submit"  id="note-submit" onClick={updateNoteFunct}>Update Note</button></div>
         }
         
     }

@@ -31,8 +31,6 @@ export function List() {
         }
     };
 
-    console.log(list)
-
     return (  
         
         <div className="list-container">
@@ -50,8 +48,6 @@ export function List() {
             < ProjectToolbar />
 
             <ul className="">
-
-
                 <ReactSortable list={list} setList={setList}>
                     {list.map((project) => (
                         <Project key={project.projectId} id={project.projectId} projectList={list} />

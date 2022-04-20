@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeProject, toggleCompleted, togglePriority, toggleStatus, updateProjectName, updateNote, updateCreatedDate, updateDueDate } from '../../../features/projects/projectsSlice';
 import { Calendar } from '../../../common/Calendar';
-import { Note } from './Note';
+import { Note } from '../../../common/Note';
 import {Button, OverlayTrigger, Overlay, Tooltip, Toast} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faGrip } from '@fortawesome/free-solid-svg-icons';
@@ -25,6 +25,11 @@ export function Project({ id, projectList }) {
     const [startDate, setStartDate] = useState(new Date());
     const checkIcon = <FontAwesomeIcon icon={faCheck} />
     const gripIcon = <FontAwesomeIcon icon={faGrip} />
+    const projectPropObject = {
+        projectName: projectName,
+        note: note,
+        projectId: projectId
+    }
     
     const eventHandler = (e) => {
 
@@ -52,13 +57,6 @@ export function Project({ id, projectList }) {
     const formSubmit = (e) => {
         e.preventDefault();     
 
-        if (e.target.id === "note-submit") {
-
-            dispatch(updateNote([id, noteValue]));
-            toggleShowA();
-            console.log("note submited")
-
-        }
         if (e.target.id === "project-name-submit") {
 
             dispatch(updateProjectName([id, projectNameValue]));
@@ -169,7 +167,7 @@ export function Project({ id, projectList }) {
 
                 {/* Notes column */}
 
-                < Note project={project()} />
+                < Note isNewProject={false} project={projectPropObject} />
 
                 <div className="devider"></div>
 

@@ -2,9 +2,50 @@
 @use '../variables';
 
 header {
-    background-color: variables.$background-primary;
+    background: variables.$background-primary;
     box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
     width: 240px;
+    @media screen and (max-width: 991px) {
+        width: 70px;
+        background: variables.$mobile-nav-background;
+
+        .nav-page-name {
+            display: none;
+        }
+        
+        nav {
+            font-size: 38px;
+            height: 320px;
+            
+        
+        }
+
+        nav ul  {
+            margin-left: 0;
+            align-items: center; 
+        }
+
+
+        nav ul li a {
+            color: #686871;
+        }
+
+        .logo-container  {
+            margin: 0 auto;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                margin: 0;
+            }
+        }
+        
+
+    }
+
+
 }
 
 .logo-container {
@@ -17,7 +58,6 @@ header {
     margin: 6px 0 0 30px;
     height: 32px;
     
-
 }
 
 .nav-container {
@@ -54,7 +94,6 @@ nav ul li a{
 
     }
 }
-
 
 .is-active {
     color: variables.$active;

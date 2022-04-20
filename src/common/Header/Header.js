@@ -6,6 +6,8 @@ import {
 } from "react-router-dom";
 import './_header.scss';
 import logo from '../../Tuesday.svg'; // Tell webpack this JS file uses this image
+import mobileLogo from '../../Tue.svg'; // Tell webpack this JS file uses this image
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faListUl, faGrip, faStopwatch, faCalendar } from '@fortawesome/free-solid-svg-icons'
 
@@ -16,10 +18,11 @@ export function Header() {
     const calendarIcon = <FontAwesomeIcon icon={faCalendar} />
 
     return (  
-        <header className=" ">
+        <header >
             <div className="logo-container d-flex align-items-center">
                 <NavLink to="/">
-                    <img src={logo} alt="Logo" />
+                    <img src={logo} alt="Logo" className="d-lg-block d-none" />
+                    <img src={mobileLogo} alt="mobile Logo" className="d-lg-none" ></img>
                 </NavLink>
 
             </div>
@@ -29,33 +32,33 @@ export function Header() {
                         <li>
                             <NavLink to="/" activeClassName='is-active' exact>
                                 <div className="d-flex">
-                                    <div className="me-4">{listIcon}</div>
-                                    <div>Lists</div>
+                                    <div className="me-lg-4">{listIcon}</div>
+                                    <div className="nav-page-name">Lists</div>
                                 </div>
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to="/cards" activeClassName='is-active'>
                                 <div className="d-flex">
-                                    <div className="me-4">{gripIcon}</div>
-                                    <div>Cards</div>
+                                    <div className="me-lg-4">{gripIcon}</div>
+                                    <div className="nav-page-name">Cards</div>
                                 </div>
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to="/timelines" activeClassName='is-active'>
-                            <div className="d-flex">
-                                <div className="me-4">{stopwatchIcon}</div>
-                                <div>Timelines</div>
-                            </div>
+                                <div className="d-flex">
+                                    <div className="me-lg-4">{stopwatchIcon}</div>
+                                    <div className="nav-page-name">Timelines</div>
+                                </div>
                             
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to="/calendar" activeClassName='is-active'>
                                 <div className="d-flex">
-                                    <div className="me-4">{calendarIcon}</div>
-                                    <div>Calendar</div>
+                                    <div className="me-lg-4">{calendarIcon}</div>
+                                    <div className="nav-page-name">Calendar</div>
                                 </div>
 
                             </NavLink>
