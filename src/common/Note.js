@@ -36,7 +36,6 @@ export function Note( {isNewProject, project, changeNote}) {
 
             dispatch(updateNote([projectId, noteValue]));
             toggleshowNote();
-            console.log("note submited");
             toggleShowNoteTextarea();
         }
         else if (isNewProject === true) {

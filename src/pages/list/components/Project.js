@@ -61,7 +61,6 @@ export function Project({ id, projectList }) {
 
             dispatch(updateProjectName([id, projectNameValue]));
             toggleShowNameInput();
-            console.log("project name submited");
 
         }
         
@@ -71,7 +70,6 @@ export function Project({ id, projectList }) {
     const updateCreatedAt = (date) => {
         setStartDate(date);
         const formatedDueDate = moment(date).format('YYYY/MM/DD');
-        console.log(formatedDueDate);
         dispatch(updateCreatedDate([id, formatedDueDate]));
 
     }
@@ -79,7 +77,6 @@ export function Project({ id, projectList }) {
     const updateDue = (date) => {
         setStartDate(date);
         const formatedDueDate = moment(date).format('YYYY/MM/DD');
-        console.log(formatedDueDate);
         dispatch(updateDueDate([id, formatedDueDate]));
 
     }

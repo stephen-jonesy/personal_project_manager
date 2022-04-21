@@ -20,8 +20,6 @@ export const projectsSlice = createSlice({
                 note: note 
 			};
 
-            console.log(project);
-
 			state.push(project);
 
         },
@@ -115,7 +113,6 @@ export const projectsSlice = createSlice({
                 item.timeline = arr[index];
         
             });
-            console.log(current(state));
             return state;
 
         },
@@ -130,9 +127,7 @@ export const projectsSlice = createSlice({
                     var dateA = new Date(a.dueDate), dateB = new Date(b.dueDate);
                     return dateA - dateB;
                 });
-    
-                // console.log(current(state));
-    
+        
                 return sorted;
 
             } 

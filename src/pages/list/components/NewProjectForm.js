@@ -44,7 +44,6 @@ export function NewProjectForm({ toggleShow }) {
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         const today  = new Date();
         const formatedDueDate = moment(dueDate).format('YYYY/MM/DD');
-        console.log(formatedDueDate);
         const projectObj = {
             projectName: projectName, 
             small_id: small_id, 

@@ -23,7 +23,6 @@ export function Calendar({ databaseDate, updateDate }) {
     }
 
     const handleClickOutside = e => {
-        console.log(e.target.className);
         if (node.current.contains(e.target)) {
           // inside click
           return;

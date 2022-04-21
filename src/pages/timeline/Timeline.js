@@ -19,7 +19,6 @@ export function Timeline() {
     useEffect(() => {
         dispatch(calculateTimelinePercentage());
         setList(lists);
-        console.log(projects);
 
     }, [JSON.stringify(lists)]);
 
