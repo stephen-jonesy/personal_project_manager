@@ -6,9 +6,9 @@ export function Dashboard () {
 
     const clickHandler = (e) => {
 
-        if (e.target.value === 'user') {
-            getUser();
-        }
+        // if (e.target.value === 'user') {
+        //     getUser();
+        // }
 
         if (e.target.value === 'logout') {
             logout();
@@ -18,22 +18,6 @@ export function Dashboard () {
     }
 
 
-    const getUser = (e) =>  {
-
-        const token = sessionStorage.getItem('auth_token');
-        console.log(token)
-
-        const config = {
-            headers: { Authorization: `Bearer ${token}` }
-        };
-
-        axios.get(`http://127.0.0.1:8000/api/user`, config)
-            .then(res => {
-            const persons = res.data;
-            console.log(persons);
-        })
-
-    }   
 
     const logout = () => {
         

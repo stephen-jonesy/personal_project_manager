@@ -70,15 +70,6 @@ export function Header() {
                     </ul>
                 </nav>
 
-                <Link to="/register">
-                    Register 
-                </Link>
-                <Link to="/dashboard">
-                    Dashboard
-                </Link>
-
-
-
             </div>
         </header>
 
