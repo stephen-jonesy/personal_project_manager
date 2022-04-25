@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import {
     BrowserRouter as Router,
     NavLink,
+    Link,
     activeClassName,
 } from "react-router-dom";
 import './_header.scss';
@@ -19,6 +20,7 @@ export function Header() {
 
     return (  
         <header >
+
             <div className="logo-container d-flex align-items-center">
                 <NavLink to="/">
                     <img src={logo} alt="Logo" className="d-lg-block d-none" />
@@ -27,7 +29,9 @@ export function Header() {
 
             </div>
             <div className="nav-container">
+
                 <nav>
+                    
                     <ul className="">
                         <li>
                             <NavLink to="/" activeClassName='is-active' exact>
@@ -65,6 +69,15 @@ export function Header() {
                         </li>
                     </ul>
                 </nav>
+
+                <Link to="/register">
+                    Register 
+                </Link>
+                <Link to="/dashboard">
+                    Dashboard
+                </Link>
+
+
 
             </div>
         </header>
