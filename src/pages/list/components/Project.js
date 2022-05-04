@@ -9,7 +9,6 @@ import { faCheck, faGrip } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
 import { GripVertical, Sticky, Trash, PencilSquare} from "react-bootstrap-icons";
 
-
 export function Project({ id, projectList }) {
     const project = () => {
         return projectList.find((project) => project.projectId === id);

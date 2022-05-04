@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { logOut } from '../../features/user/userSlice';
 
 export function Dashboard () {
+    let token = sessionStorage.getItem('auth_token');
 
+    const dispatch = useDispatch();
+    
     const clickHandler = (e) => {
 
         // if (e.target.value === 'user') {
@@ -17,32 +22,24 @@ export function Dashboard () {
 
     }
 
-
-
     const logout = () => {
         
-        //Logout
-
-        const token = sessionStorage.getItem('auth_token');
-        console.log(token)
-
-
-        const config = {
-            headers: { Authorization: `Bearer ${token}` }
-        };
-
-        sessionStorage.removeItem("auth_token");
-
+    if (token != null) {
+        console.log('click handler logout');
+        dispatch(logOut()).unwrap()
+        .then((originalPromiseResult) => {
+            console.log(originalPromiseResult);
+            // navigate('/login');
+    
+            // handle result here
+        })
+    
+        .catch((rejectedValueOrSerializedError) => {
+            console.log(rejectedValueOrSerializedError);
+            
+        })
         
-        const bodyParameters = {
-           key: "value"
-        };
-        
-        axios.post( 
-          'http://localhost:8000/api/logout',
-          bodyParameters,
-          config
-        ).then(console.log).catch(console.log);
+        }
 
     }
 

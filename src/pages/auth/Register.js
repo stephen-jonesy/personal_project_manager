@@ -3,9 +3,15 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import { getDefaultNormalizer } from '@testing-library/react';
 import { config } from '@fortawesome/fontawesome-svg-core';
+import {
+    Link,
+} from "react-router-dom";
+import { LogIn } from '../../features/user/userSlice';
+import { useDispatch } from 'react-redux';
 
 export function Register() {
-
+    
+    const dispatch = useDispatch();
     const [user, setUser] = useState('');
 
     const clickHandler = (e) => {
@@ -49,24 +55,19 @@ export function Register() {
         
         //Login
 
-        const user = {
-            email: 'stephen-jones@hotmail.co.uk',
-            password: '123456',
-        };
-
-        JSON.stringify(user)
-      
-        axios.post(`http://localhost:8000/api/login`, user)
-        .then((res) => {
-            sessionStorage.setItem('auth_token', res.data.token);        
-            console.log(res)
+        console.log('click handler login');
+        dispatch(LogIn()).unwrap()
+        .then((originalPromiseResult) => {
+            console.log(originalPromiseResult);
+            // handle result here
         })
-        .catch((err) => {
-            console.log("AXIOS ERROR: ", err);
-            if (err.response) {
-                console.log(err.response.data.message);
-            }
+    
+        .catch((rejectedValueOrSerializedError) => {
+            console.log(rejectedValueOrSerializedError);
+            
         })
+  
+        
     }
 
 
@@ -119,12 +120,13 @@ export function Register() {
     //     // ).then(console.log).catch(console.log);
     // }
 
-
     return (  
         <div >
             <Button value="register" onClick={(e) => clickHandler(e)} className="m-2">Register</Button>
             <Button value="login" onClick={(e) => clickHandler(e)} className="m-2">Login</Button>
-
+            <Link to="/dashboard">
+                Dashboard
+            </Link>
         </div>
     );
 }
